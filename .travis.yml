@@ -1,3 +1,5 @@
 language: java
+notifications:
+  slack: se491group:1Vr1pSoqxc7UOThvwoTZJLFY
 
 
