@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(page='Training Plan')">
+    <title>Training Plan</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: navbar"></div>
+
+    <div class="container-fluid">
+        <div class="row wrapper min-vh-100 flex-column flex-sm-row">
+            <div th:replace="fragments/header :: sidebar"></div>
+            <main class="col bg-faded">
+                <div class="container p-3 m-1">
+                    <h2>Training Plan</h2>
+                    <small>Content goes here.</small>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
