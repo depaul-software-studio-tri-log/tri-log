@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(page='Goals')">
+    <title>Goals</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: navbar"></div>
+
+    <div class="container-fluid">
+        <div class="row wrapper min-vh-100 flex-column flex-sm-row">
+            <div th:replace="fragments/header :: sidebar"></div>
+            <main class="col bg-faded">
+                <!-- ------------------------ -->
+                <!-- START: edit page content -->
+                <!-- ------------------------ -->
+                <div class="container p-3 m-1">
+                    <h2>Goals</h2>
+                    <small>Content goes here.</small>
+                </div>
+                <!-- ---------------------- -->
+                <!-- END: edit page content -->
+                <!-- ---------------------- -->
+            </main>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

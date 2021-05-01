@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(page='Login')">
+    <title>Login</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: navbar-login"></div>
+
+    <div class="container-fluid">
+        <main class="col bg-faded">
+            <!-- ------------------------ -->
+            <!-- START: edit page content -->
+            <!-- ------------------------ -->
+            <div class="container p-3 m-1">
+                <h2>Login</h2>
+                <small>Content goes here.</small>
+            </div>
+            <!-- ---------------------- -->
+            <!-- END: edit page content -->
+            <!-- ---------------------- -->
+        </main>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
