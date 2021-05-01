@@ -12,10 +12,20 @@
     <a class="btn btn-success ml-auto mr-1" href="/log">Log Activity</a>
     <ul class="navbar-nav flex-row">
         <li class="nav-item pl-2">
-            <a class="nav-link" href="/login"><i class="fa fa-user-circle fa-lg"></i></a>
+            <a class="nav-link" href="/profile"><i class="fa fa-user-circle fa-lg"></i></a>
         </li>
         <li class="nav-item pl-2">
             <a class="nav-link" href="#"><i class="fa fa-bell-o fa-lg"></i></a>
+        </li>
+    </ul>
+</nav>
+
+<nav th:fragment="navbar-login" class="navbar navbar-expand-sm navbar-dark bg-dark navbar-dark">
+    <a class="navbar-brand" href="/"><i class="fa fa-book fa-lg"></i> <span class="pl-2">Tri-Log</span></a>
+    <a class="btn btn-success ml-auto mr-1" href="/create">Create Account</a>
+    <ul class="navbar-nav flex-row">
+        <li class="nav-item pl-2">
+            <a class="nav-link" href="/login"><i class="fa fa-user-circle fa-lg"></i></a>
         </li>
     </ul>
 </nav>
