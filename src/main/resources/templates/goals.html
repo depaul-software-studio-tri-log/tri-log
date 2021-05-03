@@ -10,16 +10,24 @@
         <div class="row wrapper min-vh-100 flex-column flex-sm-row">
             <div th:replace="fragments/header :: sidebar"></div>
             <main class="col bg-faded">
-                <!-- ------------------------ -->
-                <!-- START: edit page content -->
-                <!-- ------------------------ -->
                 <div class="container p-3 m-1">
                     <h2>Goals</h2>
-                    <small>Content goes here.</small>
+                    <small>Create new goals</small>
                 </div>
-                <!-- ---------------------- -->
-                <!-- END: edit page content -->
-                <!-- ---------------------- -->
+                <form>
+                    <label for="goalname">Goal Name</label><br>
+                    <input type="text" id="goalname" name="goalname"><br>
+                    <fieldset id="Activity:">
+                        <input type="radio" value="">
+                        <input type="radio" value="">
+                        <input type="radio" value="">
+                    </fieldset>
+                    <label>Other</label>
+
+                    <label for="notes">Notes:</label><br>
+                    <textarea rows = "5" cols = "60" name = "notes" id="notes"></textarea><br>
+                    <input type = "submit" value = "Create Goal" />
+                </form>
             </main>
         </div>
     </div>
