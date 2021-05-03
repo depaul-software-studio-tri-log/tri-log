@@ -12,16 +12,30 @@
             <main class="col bg-faded">
                 <div class="container p-3 m-1">
                     <h2>Goals</h2>
-                    <small>Create new goals</small>
                 </div>
                 <form>
                     <label for="goalname">Goal Name</label><br>
                     <input type="text" id="goalname" name="goalname"><br>
+                    <label for="goalname">Activity</label>
                     <fieldset id="Activity:">
-                        <input type="radio" value="">
-                        <input type="radio" value="">
-                        <input type="radio" value="">
+                        <input type="radio" name="activitySelection" value="sdasd"> Swimming
+                        <input type="radio" name="activitySelection" value="sdasd"> Running
+                        <input type="radio" name="activitySelection" value="sdds"> Cycling
                     </fieldset>
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="150" value="70" class="slider" id="milesRange">
+                        Miles: <span id="distantsValue"></span>
+                        <script>
+                            var slider = document.getElementById("milesRange");
+                            var output = document.getElementById("distantsValue");
+                            output.innerHTML = slider.value;
+
+                            slider.oninput = function() {
+                                output.innerHTML = this.value;
+                            }
+                        </script>
+                    </div>
+
                     <label>Other</label>
 
                     <label for="notes">Notes:</label><br>
