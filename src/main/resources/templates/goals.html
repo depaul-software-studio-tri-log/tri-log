@@ -14,15 +14,17 @@
                     <h2>Goals</h2>
                 </div>
                 <form>
-                    <label for="goalname">Goal Name</label><br>
+                    <label for="goalname">Goal Name: </label>
                     <input type="text" id="goalname" name="goalname"><br>
-                    <label for="goalname">Activity</label>
+
                     <fieldset id="Activity:">
+                        <label for="goalname">Activity</label>
                         <input type="radio" name="activitySelection" value="sdasd"> Swimming
                         <input type="radio" name="activitySelection" value="sdasd"> Running
                         <input type="radio" name="activitySelection" value="sdds"> Cycling
                     </fieldset>
                     <div class="slidecontainer">
+                        Distances:
                         <input type="range" min="1" max="150" value="70" class="slider" id="milesRange">
                         Miles: <span id="distantsValue"></span>
                         <script>
@@ -35,9 +37,6 @@
                             }
                         </script>
                     </div>
-
-                    <label>Other</label>
-
                     <label for="notes">Notes:</label><br>
                     <textarea rows = "5" cols = "60" name = "notes" id="notes"></textarea><br>
                     <input type = "submit" value = "Create Goal" />
