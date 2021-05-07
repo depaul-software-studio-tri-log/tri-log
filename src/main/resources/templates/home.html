@@ -7,22 +7,33 @@
     <div th:replace="fragments/header :: navbar"></div>
 
     <div class="container-fluid">
-        <div class="row wrapper min-vh-100 flex-column flex-sm-row">
+        <div class="row min-vh-100 flex-column flex-sm-row">
             <div th:replace="fragments/header :: sidebar"></div>
             <main class="col bg-faded">
-                <!-- ------------------------ -->
-                <!-- START: edit page content -->
-                <!-- ------------------------ -->
-                <div class="container p-3 m-1">
-                    <h2>Home</h2>
-                    <div>
-                        <small>Welcome, <span th:text="${user.firstname}"></span></small>
+                <div class="row flex-column">
+                    <div class="col">
+                        <h2>
+                            Home |
+                            <small>Welcome, <span th:text="${user.firstname}"></span>!</small>
+                        </h2>
                     </div>
-                    <small>Content goes here.</small>
                 </div>
-                <!-- ---------------------- -->
-                <!-- END: edit page content -->
-                <!-- ---------------------- -->
+                <div class="row flex-wrap">
+                    <div class="col-12 col-sm col-xl-5 p-1 m-1">
+                        <h4>My Profile</h4>
+                    </div>
+                    <div class="col-12 col-sm col-xl-5 p-1 m-1">
+                        <h4>Goals</h4>
+                    </div>
+                </div>
+                <div class="row flex-wrap">
+                    <div class="col-12 col-sm col-xl-5 p-1 m-1">
+                        <h4>Today's Training Plan</h4>
+                    </div>
+                    <div class="col-12 col-sm col-xl-5 p-1 m-1">
+                        <h4>Upcoming Training Plan</h4>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
