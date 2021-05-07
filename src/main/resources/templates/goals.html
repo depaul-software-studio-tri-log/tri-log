@@ -27,15 +27,6 @@
                         Distances:
                         <input type="range" min="1" max="150" value="70" class="slider" id="milesRange">
                         Miles: <span id="distantsValue"></span>
-                        <script>
-                            var slider = document.getElementById("milesRange");
-                            var output = document.getElementById("distantsValue");
-                            output.innerHTML = slider.value;
-
-                            slider.oninput = function() {
-                                output.innerHTML = this.value;
-                            }
-                        </script>
                     </div>
                     <label for="notes">Notes:</label><br>
                     <textarea rows = "5" cols = "60" name = "notes" id="notes"></textarea><br>
@@ -46,5 +37,6 @@
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>
+    <script src="js/goals.js"></script>
 </body>
 </html>
