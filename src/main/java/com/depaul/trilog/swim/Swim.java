@@ -35,7 +35,7 @@ public class Swim implements Serializable{
 	private int time;
 	
 	@Column (name = "swimDate")
-	@DateTimeFormat(pattern = "MM-dd-yyyy")
+	//@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private Date swimDate;
 
 }
