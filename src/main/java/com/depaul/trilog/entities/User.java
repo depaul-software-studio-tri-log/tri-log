@@ -18,6 +18,10 @@ public class User {
     private int height;
     private int weight;
 
+    @OneToOne
+    @JoinColumn(name = "primarysport", referencedColumnName = "id")
+    private SportType primarysport;
+
     @NotBlank(message = "Username is required")
     private String username;
 
@@ -34,6 +38,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public SportType getPrimarysport() {
+        return primarysport;
+    }
+
+    public void setPrimarysport(SportType primarysport) {
+        this.primarysport = primarysport;
     }
 
     public String getFirstname() {
