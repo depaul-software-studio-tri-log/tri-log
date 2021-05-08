@@ -15,7 +15,36 @@
                 <!-- ------------------------ -->
                 <div class="container p-3 m-1">
                     <h2>Log Activity</h2>
-                    <small>Content goes here.</small>
+                   <form action = "#" th:action = "@{/trilog/swim}" th:object = "${newSwim}"   method ="post" >
+					
+			<div class = "row form-group">
+				<div class = "col-lg-6">
+					<label for= "name" >Distance(mi) </label>
+					<input type = "number" id= "distance" class= form-control th:field = "*{distance}" placeholder = "distance" >					
+				</div>	
+			</div>
+				
+			
+            <div class="row form-group">					
+				<div class = "col-lg-6">
+					<label for= "name" >Time(min) </label>
+					<input type = "number" id = "time" class= form-control th:field = "*{time}" placeholder = "minutes" >				
+				</div>	
+			</div>
+			
+			<div class="row form-group">
+				<div class = "col-lg-6">
+					<label for= "name" >Swim date </label>
+					<input type = "date" id = "swimDate" class= form-control th:field = "*{swimDate}" placeholder = "date" >				
+				</div>	
+			</div>
+		
+		
+		
+			<button type = "submit" class = "btn btn-lg btn-primary"> Submit </button>
+			<a class = "btn btn-lg btn-warning" th:ref = "@{/trilog/swim}"> Cancel </a>
+		
+		</form>
                 </div>
                 <!-- ---------------------- -->
                 <!-- END: edit page content -->
