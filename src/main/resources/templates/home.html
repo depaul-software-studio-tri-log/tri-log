@@ -11,7 +11,7 @@
             <div th:replace="fragments/header :: sidebar"></div>
             <main class="col bg-faded">
                 <div class="row flex-column">
-                    <div class="col">
+                    <div class="col pt-2">
                         <h2>
                             Home |
                             <small>Welcome, <span th:text="${user.firstname}"></span>!</small>
@@ -20,12 +20,16 @@
                 </div>
                 <div class="row flex-wrap">
                     <div class="col-12 col-sm col-xl-5 p-1 m-1">
-                        <div class="row flex-column no-gutters">
-                            <div class="col">
-                                <h4>My Profile</h4>
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-bottom-0 border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-6">
+                                        <h5>My Profile</h5>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col">
-                                <dl class="row flex-wrap no-gutters">
+                                <dl class="row flex-wrap no-gutters p-2">
                                     <dt class="col-12 col-sm-4">Name</dt>
                                     <dd class="col-12 col-sm">
                                         <span th:text="${user.getFirstname()} + ' ' + ${user.getLastname()}"></span>
@@ -50,15 +54,39 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm col-xl-5 p-1 m-1">
-                        <h4>Goals</h4>
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-bottom-0 border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-6">
+                                        <h5>Goals</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row flex-wrap">
                     <div class="col-12 col-sm col-xl-5 p-1 m-1">
-                        <h4>Today's Training Plan</h4>
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-bottom-0 border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-6">
+                                        <h5>Today's Training Plan</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-12 col-sm col-xl-5 p-1 m-1">
-                        <h4>Upcoming Training Plan</h4>
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-bottom-0 border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-7">
+                                        <h5>Upcoming Training Plan</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
