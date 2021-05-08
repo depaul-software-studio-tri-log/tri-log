@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `goals` (
     `goalname` varchar(256) DEFAULT NULL,
     `activity` varchar(256) DEFAULT NULL,
-    `distant` varchar(256) NOT NULL,
+    `distance` varchar(256) NOT NULL,
     `note` varchar(1024) DEFAULT NULL,
     `user_id` int NOT NULL,
     `id` int NOT NULL AUTO_INCREMENT,
