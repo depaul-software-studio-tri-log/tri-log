@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping ("/trilog/swim")
 public class SwimController {
 	
-	//@Autowired
-	//private SwimRepository swimRepo;
+	@Autowired
+	private SwimRepository swimRepo;
 	
 	@Autowired
 	private SwimService swimService;
@@ -25,27 +25,28 @@ public class SwimController {
 	
 	@GetMapping 
 	public String viewSwims(Model model) {
-		model.addAttribute("swim",swimService.getAllSwims());
+		model.addAttribute("swims",swimService.getAllSwims());
 		
 		return "swims/viewSwims";
 	}
 	
 	@RequestMapping(params ="addSwim")
 	public String addSwim(Model model) {
-		model.addAttribute("swim", new Swim());
-		return "swims/ swim";
+		model.addAttribute("newSwim", new Swim());
+		return "swims/input_swim";
 		
 		
 	}
 	
 	@PostMapping
-	public String createSwim(@ModelAttribute("swims")Swim swim, BindingResult bindingResult) {
+	public String createSwim(@ModelAttribute("newSwim")Swim swim, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			return "swims/swim";
+			return "swims/input_swim";
 		}
 		
-		swimService.addSwim(swim);
-		return "redirect: /trilog/swim";
+		//swimService.addSwim(swim);
+		swimRepo.save(swim);
+		return "redirect:/trilog/swim";
 		
 	}
 	

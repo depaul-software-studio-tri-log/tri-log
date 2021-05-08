@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(page='Swims')">
+    <title>Swims</title>
+</head>
+
+
+<body>
+	
+	<header>
+		<h1 class = "display-4">Swims</h1>
+	
+	</header>
+		
+		
+		
+	<table class = "table table-bordered table-striped">
+		<thead class = "thead-dark">
+			<tr>
+				<th scope = "col"> Distance</th>
+				<th scope = "col"> Time </th>
+				<th scope = "col"> Date </th>
+		
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:if = "${swims.empty}">
+				<td colspan = "2"> No Swims yet</td>
+			</tr>
+			
+			<tr th:each = "swim:${swims}">
+				<td th:text = "${swim.distance}"></td>
+				<td th:text = "${swim.time}"></td>
+				<td th:text = "${swim.swimDate}"></td>
+			</tr>
+		</tbody>
+				
+	</table>
+		
+	<a class="btn btn-lg btn-primary" th:href="@{/trilog/swim?addSwim}"> Add Swim </a>
+
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

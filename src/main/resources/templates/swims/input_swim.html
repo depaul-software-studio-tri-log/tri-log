@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(page='Input Swim')">
+    <title>Input Swim</title>
+</head>
+
+
+<body>
+	
+	<header>
+		<h1 class = "display-4">Input Swim</h1>
+	
+	</header>
+
+	<div class = "container">
+	
+		<form action = "#" th:action = "@{/trilog/swim}" th:object = "${newSwim}"   method ="post" >
+					
+			<div class = "row form-group">
+				<div class = "col-lg-6">
+					<label for= "name" >Distance(mi) </label>
+					<input type = "number" class= form-control th:field = "*{distance}" placeholder = "distance" >
+					
+				</div>	
+			</div>
+				
+			
+            <div class="row form-group">	
+				
+				<div class = "col-lg-6">
+					<label for= "name" >Time(min) </label>
+					<input type = "number" class= form-control th:field = "*{time}" placeholder = "minutes" >
+				
+				</div>	
+			</div>
+			
+			<div class="row form-group">
+				<div class = "col-lg-6">
+					<label for= "name" >Swim date </label>
+					<input type = "date" class= form-control th:field = "*{swimDate}" placeholder = "date" >
+				
+				</div>	
+
+			</div>
+		
+		
+		
+			<button type = "submit" class = "btn btn-lg btn-primary"> Submit </button>
+			<a class = "btn btn-lg btn-warning" th:ref = "@{/trilog/swim}"> Cancel </a>
+		
+		</form>
+
+	</div>	
+
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

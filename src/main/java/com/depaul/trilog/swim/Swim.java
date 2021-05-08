@@ -2,6 +2,7 @@ package com.depaul.trilog.swim;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -32,6 +35,7 @@ public class Swim implements Serializable{
 	private int time;
 	
 	@Column (name = "swimDate")
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private Date swimDate;
 
 }
