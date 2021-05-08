@@ -25,7 +25,7 @@ public class SwimController {
 	
 	@GetMapping 
 	public String viewSwims(Model model) {
-		model.addAttribute("swims",swimService.getAllSwims());
+		model.addAttribute("swims",swimRepo.findAll());
 		
 		return "swims/viewSwims";
 	}
