@@ -1,7 +1,10 @@
 var slider = document.getElementById("milesRange");
-var output = document.getElementById("distantsValue");
+var output = document.getElementById("milesBox");
 output.innerHTML = slider.value;
 
-slider.oninput = function() {
-    output.innerHTML = this.value;
+slider.onchange = function() {
+    output.value = this.value;
+}
+output.onkeyup = function(){
+    slider.value = output.value;
 }
