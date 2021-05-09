@@ -1,0 +1,1 @@
+update user set password = '$2y$10$pHLVYoOyBwp0K/Yyke2nJOFpXJJb3872izCNbcKeh1Go14/S1KYLC' where username = 'bob';
