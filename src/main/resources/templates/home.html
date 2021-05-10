@@ -42,7 +42,7 @@
                                     <div class="w-100"></div>
                                     <dt class="col-12 col-sm-4">Birthday</dt>
                                     <dd class="col-12 col-sm">
-                                        <span th:text="${user.getBirthdate()}"></span>
+                                        <span id="birthday"></span>
                                     </dd>
                                     <div class="w-100"></div>
                                     <dt class="col-12 col-sm-4">Height</dt>
@@ -99,9 +99,9 @@
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>
-    <script th:src="@{/js/home.js}"></script>
     <script type="text/javascript" th:inline="javascript">
-        calculateAge([[${user.getBirthdate()}]]);
+        const userBirthdate = [[${user.getBirthdate()}]];
     </script>
+    <script th:src="@{/js/home.js}"></script>
 </body>
 </html>
