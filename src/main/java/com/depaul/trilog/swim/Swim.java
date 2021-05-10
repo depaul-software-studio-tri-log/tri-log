@@ -17,7 +17,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "Swims")
+@Table(name = "swims")
 public class Swim implements Serializable{
 	private static final long serialVersionUID = 1L;
 
