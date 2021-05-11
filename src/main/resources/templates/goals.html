@@ -10,20 +10,37 @@
         <div class="row wrapper min-vh-100 flex-column flex-sm-row">
             <div th:replace="fragments/header :: sidebar"></div>
             <main class="col bg-faded">
-                <!-- ------------------------ -->
-                <!-- START: edit page content -->
-                <!-- ------------------------ -->
                 <div class="container p-3 m-1">
                     <h2>Goals</h2>
-                    <small>Content goes here.</small>
+                    <div class="row">
+                    <form class="form-group">
+                        <label for="goalname">Goal Name: </label>
+                        <input type="text" id="goalname" name="goalname"><br>
+
+                        <fieldset id="Activity:">
+                            <label for="goalname">Activity</label>
+                            <input type="radio" name="activitySelection" id="swimmingChoice" value="swimming" checked> Swimming
+                            <input type="radio" name="activitySelection" id="runningChoice" value="running"> Running
+                            <input type="radio" name="activitySelection" id="cyclingChoice" value="cycling"> Cycling
+                        </fieldset>
+                        <div class="slidecontainer">
+                            Distance:
+                            <input type="range" min="1" max="100" value="5" class="slider" id="milesRange" >
+                            Miles: <input type="number" name="miles" value="5" id="milesBox" class="goals-numbers">
+                        </div>
+                        <label for="time">Time(Minutes): </label>
+                        <input type="number" id="time" name="time" class="goals-numbers"><br>
+                        <label for="notes">Notes:</label><br>
+                        <textarea rows = "5" cols = "60" name = "notes" id="notes"></textarea><br>
+                        <input type = "submit" value = "Create Goal" class="btn btn-primary" />
+                    </form>
+                    </div>
                 </div>
-                <!-- ---------------------- -->
-                <!-- END: edit page content -->
-                <!-- ---------------------- -->
+
             </main>
         </div>
     </div>
-
     <div th:replace="fragments/footer :: footer"></div>
+    <script src="js/goals.js"></script>
 </body>
 </html>
