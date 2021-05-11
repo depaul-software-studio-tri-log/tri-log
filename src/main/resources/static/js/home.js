@@ -49,5 +49,13 @@ function convertHeightToFt() {
     document.getElementById("height").innerHTML = convertedHeight;
 }
 
+function convertWeightToKg() {
+    document.getElementById("weight").innerHTML = userWeight;
+}
+
+function convertWeightToLbs() {
+    document.getElementById("weight").innerHTML = Math.round(userWeight * 2.205 * 10) / 10;
+}
+
 calculateAge();
 formatBirthday();

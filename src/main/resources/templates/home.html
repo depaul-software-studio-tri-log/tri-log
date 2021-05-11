@@ -44,21 +44,31 @@
                                     <dd class="col-12 col-sm">
                                         <span id="birthday"></span>
                                     </dd>
-                                    <div class="w-100"></div>
+                                    <div class="w-100 dropdown-divider mb-3"></div>
                                     <dt class="col-12 col-sm-4">Height</dt>
                                     <dd class="col-12 col-sm">
                                         <span id="height" th:text="${user.getHeight()}"></span>
                                         <div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
-                                            <label class="btn btn-outline-primary active" for="heightcm">cm
-                                            <input type="radio" name="heightcm" id="heightcm" onclick="convertHeightToCm()" checked></label>
-                                            <label class="btn btn-outline-primary" for="heightft">ft/in
-                                            <input type="radio" name="heightft" id="heightft" onclick="convertHeightToFt()"></label>
+                                            <label class="btn btn-outline-primary active" for="height-cm">cm
+                                                <input type="radio" name="height-cm" id="height-cm" onclick="convertHeightToCm()" checked>
+                                            </label>
+                                            <label class="btn btn-outline-primary" for="height-ft">ft/in
+                                                <input type="radio" name="height-ft" id="height-ft" onclick="convertHeightToFt()">
+                                            </label>
                                         </div>
                                     </dd>
                                     <div class="w-100"></div>
                                     <dt class="col-12 col-sm-4">Weight</dt>
                                     <dd class="col-12 col-sm">
-                                        <span th:text="${user.getWeight()} + ' kg'"></span>
+                                        <span id="weight" th:text="${user.getWeight()}"></span>
+                                        <div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-outline-primary active" for="weight-kg">kg
+                                                <input type="radio" name="weight-kg" id="weight-kg" onclick="convertWeightToKg()" checked>
+                                            </label>
+                                            <label class="btn btn-outline-primary" for="weight-lbs">lbs
+                                                <input type="radio" name="weight-lbs" id="weight-lbs" onclick="convertWeightToLbs()">
+                                            </label>
+                                        </div>
                                     </dd>
                                 </dl>
                             </div>
@@ -108,6 +118,7 @@
     <script type="text/javascript" th:inline="javascript">
         const userBirthdate = [[${user.getBirthdate()}]];
         const userHeight = [[${user.getHeight()}]];
+        const userWeight = [[${user.getWeight()}]];
     </script>
     <script th:src="@{/js/home.js}"></script>
 </body>
