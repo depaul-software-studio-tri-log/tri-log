@@ -5,6 +5,6 @@ output.innerHTML = slider.value;
 slider.onchange = function() {
     output.value = this.value;
 }
-output.onkeyup = function(){
+output.onchange = function(){
     slider.value = output.value;
 }
