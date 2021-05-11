@@ -11,6 +11,7 @@
 }
 
 
+
 #profilebutton
 {
   background-color: #4CAF50; /* Green */
@@ -28,5 +29,9 @@ label{
   width: 20%;
   padding: 10px;
 
+}
+
+.goals-numbers {
+    width: 75px;
 }
 
