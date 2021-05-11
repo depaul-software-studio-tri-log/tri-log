@@ -65,6 +65,7 @@ public class User {
         this.lastname = lastname;
     }
 
+
     public int getHeight() {
         return height;
     }
