@@ -3,7 +3,6 @@ select count(*) into @columncount from user where email = 'bob.smith@none.local'
 set @query = IF(@columncount <= 0, 'INSERT INTO `user`
 (`firstname`,
 `lastname`,
-`age`,
 `email`,
 `username`,
 `password`,
