@@ -47,7 +47,13 @@
                                     <div class="w-100"></div>
                                     <dt class="col-12 col-sm-4">Height</dt>
                                     <dd class="col-12 col-sm">
-                                        <span th:text="${user.getHeight()} + ' cm'"></span>
+                                        <span id="height" th:text="${user.getHeight()}"></span>
+                                        <div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
+                                            <label class="btn btn-outline-primary active" for="heightcm">cm
+                                            <input type="radio" name="heightcm" id="heightcm" onclick="convertHeightToCm()" checked></label>
+                                            <label class="btn btn-outline-primary" for="heightft">ft/in
+                                            <input type="radio" name="heightft" id="heightft" onclick="convertHeightToFt()"></label>
+                                        </div>
                                     </dd>
                                     <div class="w-100"></div>
                                     <dt class="col-12 col-sm-4">Weight</dt>
@@ -101,6 +107,7 @@
     <div th:replace="fragments/footer :: footer"></div>
     <script type="text/javascript" th:inline="javascript">
         const userBirthdate = [[${user.getBirthdate()}]];
+        const userHeight = [[${user.getHeight()}]];
     </script>
     <script th:src="@{/js/home.js}"></script>
 </body>

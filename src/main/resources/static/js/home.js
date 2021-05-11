@@ -37,5 +37,17 @@ function formatBirthday() {
     document.getElementById("birthday").innerHTML = birthday + ordinalSuffix;
 }
 
+function convertHeightToCm() {
+    document.getElementById("height").innerHTML = userHeight;
+}
+
+function convertHeightToFt() {
+    let convertedHeight;
+    let inches = userHeight / 2.54;
+
+    convertedHeight = Math.floor(inches / 12) + "\'" + Math.round(inches % 12) + "\"";
+    document.getElementById("height").innerHTML = convertedHeight;
+}
+
 calculateAge();
 formatBirthday();
