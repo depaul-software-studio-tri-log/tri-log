@@ -17,6 +17,7 @@ public class User {
     private String lastname;
     private int height;
     private int weight;
+    private String password;
 
     @OneToOne
     @JoinColumn(name = "primarysport", referencedColumnName = "id")
@@ -79,6 +80,10 @@ public class User {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
 
     public String getUsername() {
         return username;
