@@ -9,7 +9,10 @@
 </head>
 <body>
 <nav th:fragment="navbar" class="navbar navbar-expand-sm navbar-dark bg-dark shadow-lg navbar-dark">
-    <a class="navbar-brand" href="/"><i class="fas fa-book fa-lg"></i> <span class="pl-2">Tri-Log</span></a>
+    <a class="navbar-brand" href="/">
+        <img src="/img/trilog_icon.png" class="d-inline-block align-top" width="30" height="30" alt="Tri-Log">
+        <span class="pl-2">Tri-Log</span>
+    </a>
     <a class="btn btn-success ml-auto mr-1" href="/trilog/swim?addSwim">Log Activity</a>
     <ul class="navbar-nav flex-row">
         <li class="nav-item dropdown dropleft pl-2">
@@ -27,7 +30,10 @@
 </nav>
 
 <nav th:fragment="navbar-login" class="navbar navbar-expand-sm navbar-dark bg-dark shadow-lg navbar-dark">
-    <a class="navbar-brand" href="/"><i class="fas fa-book fa-lg"></i> <span class="pl-2">Tri-Log</span></a>
+    <a class="navbar-brand" href="/">
+        <img src="/img/trilog_icon.png" class="d-inline-block align-top" width="30" height="30" alt="Tri-Log">
+        <span class="pl-2">Tri-Log</span>
+    </a>
     <a class="btn btn-success ml-auto mr-1" href="/create">Create Account</a>
     <ul class="navbar-nav flex-row">
         <li class="nav-item dropdown dropleft pl-2">
