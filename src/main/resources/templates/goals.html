@@ -12,26 +12,31 @@
             <main class="col bg-faded">
                 <div class="container p-3 m-1">
                     <h2>Goals</h2>
-                </div>
-                <form>
-                    <label for="goalname">Goal Name: </label>
-                    <input type="text" id="goalname" name="goalname"><br>
+                    <div class="row"></div>
+                    <form class="form-group">
+                        <label for="goalname">Goal Name: </label>
+                        <input type="text" id="goalname" name="goalname"><br>
 
-                    <fieldset id="Activity:">
-                        <label for="goalname">Activity</label>
-                        <input type="radio" name="activitySelection" value="sdasd"> Swimming
-                        <input type="radio" name="activitySelection" value="sdasd"> Running
-                        <input type="radio" name="activitySelection" value="sdds"> Cycling
-                    </fieldset>
-                    <div class="slidecontainer">
-                        Distance:
-                        <input type="range" min="1" max="150" value="70" class="slider" id="milesRange">
-                        Miles: <input type="number" name="miles" value="70" id="milesBox">
+                        <fieldset id="Activity:">
+                            <label for="goalname">Activity</label>
+                            <input type="radio" name="activitySelection" value="sdasd"> Swimming
+                            <input type="radio" name="activitySelection" value="sdasd"> Running
+                            <input type="radio" name="activitySelection" value="sdds"> Cycling
+                        </fieldset>
+                        <div class="slidecontainer">
+                            Distance:
+                            <input type="range" min="1" max="100" value="5" class="slider" id="milesRange" >
+                            Miles: <input type="number" name="miles" value="5" id="milesBox" class="goals-numbers">
+                        </div>
+                        <label for="time">Time(Minutes): </label>
+                        <input type="number" id="time" name="time" class="goals-numbers"><br>
+                        <label for="notes">Notes:</label><br>
+                        <textarea rows = "5" cols = "60" name = "notes" id="notes"></textarea><br>
+                        <input type = "submit" value = "Create Goal" class="btn btn-primary" />
+                    </form>
                     </div>
-                    <label for="notes">Notes:</label><br>
-                    <textarea rows = "5" cols = "60" name = "notes" id="notes"></textarea><br>
-                    <input type = "submit" value = "Create Goal" />
-                </form>
+                </div>
+
             </main>
         </div>
     </div>
