@@ -5,6 +5,37 @@
 .login-form {
     padding-top: 20px;
 }
+
+.goals-numbers {
+    width: 75px;
+}
+
+#profilebutton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  margin-left: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#profile-form label{
+
+  margin: auto;
+  width: 20%;
+  padding: 10px;
+
+}
+
+.profilesportfield{
+  display:inline-block;
+  margin: auto;
+  padding-right: 50px;
+}
+
 .goals-numbers {
     width: 75px;
 }

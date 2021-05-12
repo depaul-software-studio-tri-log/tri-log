@@ -1,10 +1,10 @@
-select count(*) into @columncount from user where email = 'bob.smith@none.local' and user_name = 'bob';
+select count(*) into @columncount from user where email = 'bob.smith@none.local' and username = 'bob';
 
 set @query = IF(@columncount <= 0, 'INSERT INTO `user`
-(`first_name`,
-`last_name`,
+(`firstname`,
+`lastname`,
 `email`,
-`user_name`,
+`username`,
 `password`,
 `enabled`,
 `birthdate`,
