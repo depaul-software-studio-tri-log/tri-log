@@ -18,7 +18,7 @@ public class GoalsService {
     }
 
     public void addNewGoal(Goals goals) {
-        goals.setUser_id(1);
+        goals.setUser_id(userService.getCurrentUser().getId());
         goalsRepository.save(goals);
     }
 
