@@ -22,7 +22,7 @@
   font-size: 16px;
 }
 
-label{
+#profile-form label{
 
   margin: auto;
   width: 20%;
@@ -30,7 +30,7 @@ label{
 
 }
 
-.mb-3{
+.profilesportfield{
   display:inline-block;
   margin: auto;
   padding-right: 50px;

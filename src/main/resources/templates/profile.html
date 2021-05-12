@@ -15,7 +15,7 @@
                 <!-- ------------------------ -->
                 <div class="container p-3 m-1">
                     <h2>My Profile</h2>
-                    <form action="/profile/update" th:object="${user}" method="post">
+                    <form action="/profile/update" th:object="${user}" method="post" id="profile-form">
                         <label class="mt-3" for="firstname">Name</label>
                         <input id="firstname" th:field="*{firstname}" ></input>
                         <br>
@@ -32,7 +32,7 @@
                         <input type="date" id="birthdate" th:field="*{birthdate}" ></input>
                         <br>
                         <label class="mt-3" for="sporttype">Type of Athlete</label>
-                        <div class="mb-3">
+                        <div class="profilesportfield">
                             <select id="sporttype" class="form-control" th:field="*{primarysport}">
                                 <option th:each = "sportType : ${sportTypes}"
                                         th:value = "${sportType.id}"
