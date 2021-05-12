@@ -13,7 +13,7 @@
                 <div class="container p-3 m-1">
                     <h2>Goals</h2>
                     <div class="row">
-                    <form class="form-group">
+                    <form th:action="@{/goals}" class="form-group" >
                         <label for="goalname">Goal Name: </label>
                         <input type="text" id="goalname" name="goalname"><br>
 
@@ -26,10 +26,10 @@
                         <div class="slidecontainer">
                             Distance:
                             <input type="range" min="1" max="100" value="5" class="slider" id="milesRange" >
-                            Miles: <input type="number" name="miles" value="5" id="milesBox" class="goals-numbers">
+                            Miles: <input type="number" min="1" name="miles" value="5" id="milesBox" class="goals-numbers">
                         </div>
                         <label for="time">Time(Minutes): </label>
-                        <input type="number" id="time" name="time" class="goals-numbers"><br>
+                        <input type="number" id="time" name="time" min="1" class="goals-numbers"><br>
                         <label for="notes">Notes:</label><br>
                         <textarea rows = "5" cols = "60" name = "notes" id="notes"></textarea><br>
                         <input type = "submit" value = "Create Goal" class="btn btn-primary" />
