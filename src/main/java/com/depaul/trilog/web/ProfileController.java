@@ -36,6 +36,7 @@ public class ProfileController {
         User currentUser = userService.getCurrentUser();
         user.setId(currentUser.getId());
         user.setUsername(currentUser.getUsername());
+        user.setPassword(currentUser.getPassword());
         userRepository.save(user);
         return "redirect:/profile";
     }
