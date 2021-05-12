@@ -1,16 +1,26 @@
-package com.depaul.trilog.entities;
+package com.depaul.trilog.goals;
 
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
-public class Goal {
+public class Goals {
     @Id
     private int id;
 
+    @Column(name = "goalname")
     private String goalname;
+    @Column(name = "activity")
     private String activity;
+    @Column(name = "distance")
+    private int distance;
+    @Column(name = "minutes")
+    private int minutes;
+    @Column(name = "note")
+    private String note;
+    @Column(name = "user_id")
+    private int user_id;
 
     public String getGoalname() {
         return goalname;
@@ -60,8 +70,5 @@ public class Goal {
         this.user_id = user_id;
     }
 
-    private int distance;
-    private int minutes;
-    private String note;
-    private int user_id;
+
 }

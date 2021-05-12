@@ -1,12 +1,8 @@
 package com.depaul.trilog.goals;
 
-import com.depaul.trilog.dao.UserRepository;
-import com.depaul.trilog.entities.Goal;
 import com.depaul.trilog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class GoalsService {
@@ -21,4 +17,12 @@ public class GoalsService {
         this.goalsRepository = goalsRepository;
     }
 
+    public void addNewGoal(Goals goals) {
+        goals.setUser_id(1);
+        goalsRepository.save(goals);
+    }
+
+//    public List<Goal> getGoals(){
+//        return goalsRepository.findByUser_id(userService.getCurrentUser().getId());
+//    }
 }
