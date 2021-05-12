@@ -13,7 +13,6 @@ set @query = IF(@columncount <= 0, 'INSERT INTO `user`
 VALUES
 (\'Bob\',
 \'Smith\',
-33,
 \'bob.smith@none.local\',
 \'bob\',
 \'\',

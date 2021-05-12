@@ -10,10 +10,7 @@
     width: 75px;
 }
 
-
-
-#profilebutton
-{
+#profilebutton {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -24,6 +21,7 @@
   display: inline-block;
   font-size: 16px;
 }
+
 label{
 
   margin: auto;
@@ -31,13 +29,13 @@ label{
   padding: 10px;
 
 }
+
 .mb-3{
   display:inline-block;
   margin: auto;
-  width: 20%;
   padding-right: 50px;
 }
+
 .goals-numbers {
     width: 75px;
 }
-
