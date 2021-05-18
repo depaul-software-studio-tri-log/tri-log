@@ -10,16 +10,44 @@
         <div class="row wrapper min-vh-100 flex-column flex-sm-row">
             <div th:replace="fragments/header :: sidebar"></div>
             <main class="col bg-faded">
-                <!-- ------------------------ -->
-                <!-- START: edit page content -->
-                <!-- ------------------------ -->
                 <div class="container p-3 m-1">
-                    <h2>Training Plan</h2>
-                    <small>Content goes here.</small>
+                    <h2 class="mb-3">Training Plan</h2>
+                    <form>
+                        <div class="form-group row">
+                            <label for="planDate" class="col-sm-3 col-form-label">Date</label>
+                            <div class="col-sm col-md-5">
+                                <input type="date" id="planDate" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Activity</label>
+                            <div class="col-sm">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-outline-primary active" for="swimming">Swimming
+                                        <input type="radio" name="swimming" id="swimming" class="form-control" value="1" checked>
+                                    </label>
+                                    <label class="btn btn-outline-primary" for="cycling">Cycling
+                                        <input type="radio" name="cycling" id="cycling" class="form-control" value="2">
+                                    </label>
+                                    <label class="btn btn-outline-primary" for="running">Running
+                                        <input type="radio" name="running" id="running" class="form-control" value="3">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="planDetails" class="col-sm-3 col-form-label">Workout Details</label>
+                            <div class="col-sm col-md-5">
+                                <textarea class="form-control" id="planDetails" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col col-md-8">
+                                <input type="submit" class="btn btn-primary form-control" value="Add to Calendar">
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <!-- ---------------------- -->
-                <!-- END: edit page content -->
-                <!-- ---------------------- -->
             </main>
         </div>
     </div>
