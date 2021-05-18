@@ -1,5 +1,7 @@
-package com.depaul.trilog.goals;
+package com.depaul.trilog.services;
 
+import com.depaul.trilog.dao.GoalsRepository;
+import com.depaul.trilog.entities.Goals;
 import com.depaul.trilog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

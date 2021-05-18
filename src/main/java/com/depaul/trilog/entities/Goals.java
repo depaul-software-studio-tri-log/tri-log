@@ -1,5 +1,6 @@
-package com.depaul.trilog.goals;
+package com.depaul.trilog.entities;
 
+import com.depaul.trilog.entities.SportType;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ public class Goals {
     @Column(name = "goalname")
     private String goalname;
     @Column(name = "activity")
-    private String activity;
+    private int activity;
     @Column(name = "distance")
     private int distance;
     @Column(name = "minutes")
@@ -22,6 +23,17 @@ public class Goals {
     @Column(name = "user_id")
     private int user_id;
 
+    @Transient
+    private SportType primarysport;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getGoalname() {
         return goalname;
     }
@@ -30,11 +42,11 @@ public class Goals {
         this.goalname = goalname;
     }
 
-    public String getActivity() {
+    public int getActivity() {
         return activity;
     }
 
-    public void setActivity(String activity) {
+    public void setActivity(int activity) {
         this.activity = activity;
     }
 
@@ -70,5 +82,12 @@ public class Goals {
         this.user_id = user_id;
     }
 
+    public SportType getPrimarysport() {
+        return primarysport;
+    }
+
+    public void setPrimarysport(SportType primarysport) {
+        this.primarysport = primarysport;
+    }
 
 }

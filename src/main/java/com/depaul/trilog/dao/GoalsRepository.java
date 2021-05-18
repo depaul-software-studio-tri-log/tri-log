@@ -1,5 +1,6 @@
-package com.depaul.trilog.goals;
+package com.depaul.trilog.dao;
 
+import com.depaul.trilog.entities.Goals;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

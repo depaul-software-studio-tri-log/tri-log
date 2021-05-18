@@ -1,0 +1,1 @@
+ALTER TABLE `goals` MODIFY COLUMN activity INT;
