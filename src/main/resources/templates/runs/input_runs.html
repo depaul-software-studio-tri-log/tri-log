@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(page='Input Run')">
+    <title>Input Run</title>
+</head>
+<body>
+	<div th:replace="fragments/header :: navbar"></div>
+
+	<div class="container-fluid">
+		<div class="row wrapper min-vh-100 flex-column flex-sm-row">
+			<div th:replace="fragments/header :: sidebar"></div>
+			<main class="col bg-faded">
+
+				<div class = "container pt-2">
+					<h1 class = "display-4">Input Run</h1>
+
+					<form action = "#" th:action = "@{/trilog/run}" th:object = "${newRun}"   method ="post" >
+
+						<div class = "row form-group">
+							<div class = "col-lg-6">
+								<label for= "distance" >Distance(mi) </label>
+								<input type = "number" id= "distance" class= form-control th:field = "*{distance}" placeholder = "distance" >
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class = "col-lg-6">
+								<label for= "time" >Time(min) </label>
+								<input type = "number" id = "time" class= form-control th:field = "*{time}" placeholder = "minutes" >
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class = "col-lg-6">
+								<label for= "swimDate" >Run date </label>
+								<input type = "date" id = "runDate" class= form-control th:field = "*{runDate}" placeholder = "date" >
+							</div>
+						</div>
+
+						<button type = "submit" class = "btn btn-lg btn-primary"> Submit </button>
+						<a class = "btn btn-lg btn-warning" th:ref = "@{/trilog/run}"> Cancel </a>
+
+					</form>
+				</div>
+
+			</main>
+		</div>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
