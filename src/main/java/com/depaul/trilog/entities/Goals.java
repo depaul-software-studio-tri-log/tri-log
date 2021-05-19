@@ -23,9 +23,6 @@ public class Goals {
     @Column(name = "user_id")
     private int user_id;
 
-    @Transient
-    private SportType primarysport;
-
     public int getId() {
         return id;
     }
@@ -81,13 +78,4 @@ public class Goals {
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
-
-    public SportType getPrimarysport() {
-        return primarysport;
-    }
-
-    public void setPrimarysport(SportType primarysport) {
-        this.primarysport = primarysport;
-    }
-
 }
