@@ -8,3 +8,5 @@ slider.onchange = function() {
 output.onchange = function(){
     slider.value = output.value;
 }
+
+document.getElementById("swimmingChoice").setAttribute("checked","checked")
