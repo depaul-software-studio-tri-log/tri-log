@@ -12,11 +12,11 @@
             <main class="col bg-faded">
                 <div class="container p-3 m-1">
                     <h2 class="mb-3">Training Plan</h2>
-                    <form>
+                    <form th:action="@{/plan/add}" th:object="${plan}" method="post">
                         <div class="form-group row">
                             <label for="planDate" class="col-sm-3 col-form-label">Date</label>
                             <div class="col-sm col-md-5">
-                                <input type="date" id="planDate" class="form-control">
+                                <input type="date" id="planDate" class="form-control" th:field="*{date}">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -24,13 +24,13 @@
                             <div class="col-sm">
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label class="btn btn-outline-primary active" for="swimming">Swimming
-                                        <input type="radio" name="swimming" id="swimming" class="form-control" value="1" checked>
+                                        <input type="radio" name="swimming" id="swimming" class="form-control" value="1" th:field="*{activity}" checked>
                                     </label>
                                     <label class="btn btn-outline-primary" for="cycling">Cycling
-                                        <input type="radio" name="cycling" id="cycling" class="form-control" value="2">
+                                        <input type="radio" name="cycling" id="cycling" class="form-control" value="2" th:field="*{activity}">
                                     </label>
                                     <label class="btn btn-outline-primary" for="running">Running
-                                        <input type="radio" name="running" id="running" class="form-control" value="3">
+                                        <input type="radio" name="running" id="running" class="form-control" value="3" th:field="*{activity}">
                                     </label>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                         <div class="form-group row">
                             <label for="planDetails" class="col-sm-3 col-form-label">Workout Details</label>
                             <div class="col-sm col-md-5">
-                                <textarea class="form-control" id="planDetails" rows="5"></textarea>
+                                <textarea class="form-control" id="planDetails" rows="5" th:field="*{details}"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -53,5 +53,8 @@
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>
+    <script type="text/javascript">
+        document.getElementById("swimming").checked = true;
+    </script>
 </body>
 </html>
