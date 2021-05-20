@@ -39,3 +39,15 @@
 .goals-numbers {
     width: 75px;
 }
+
+.dropdown-item {
+    padding:
+}
+
+.modal-body .inputrow label {
+    flex: 1;
+}
+
+.modal-body .inputrow input {
+    flex: 2;
+}

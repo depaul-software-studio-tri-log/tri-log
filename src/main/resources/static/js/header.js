@@ -25,11 +25,39 @@ const wireChangePasswordButton = () => {
     });
 }
 
+$("#oldPasswordTB").keyup(() => {
+    setChangePasswordEnabled();
+});
+
+$("#newPasswordTB").keyup(() => {
+    setChangePasswordEnabled();
+});
+
+$("#verifyPasswordTB").keyup(() => {
+    setChangePasswordEnabled();
+});
+
+
 window.showChangePasswordModal = () => {
     wireChangePasswordButton();
     $("#oldPasswordTB").val("");
     $("#newPasswordTB").val("");
     $("#verifyPasswordTB").val("");
+    setChangePasswordEnabled();
     $('#changePasswordModal').modal();
 }
+
+const setChangePasswordEnabled = () => {
+    if ($("#oldPasswordTB").val().length > 0 &&
+            $("#newPasswordTB").val().length > 0 &&
+            $("#verifyPasswordTB").val().length > 0 &&
+            $("#newPasswordTB").val() === $("#verifyPasswordTB").val()) {
+        $('#changePasswordBTN').removeAttr("disabled");
+    }
+    else {
+        $('#changePasswordBTN').attr("disabled", "disabled");
+    }
+}
+
+
 
