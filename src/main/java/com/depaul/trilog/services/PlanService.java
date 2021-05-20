@@ -6,6 +6,7 @@ import com.depaul.trilog.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,5 +26,14 @@ public class PlanService {
         User currentUser = userService.getCurrentUser();
         plan.setUser(currentUser.getId());
         this.planRepo.save(plan);
+    }
+
+    public Plan findByDate(Date date) {
+        Plan plan = null;
+        List<Plan> plans = this.planRepo.findByDate(date);
+        if (!plans.isEmpty()) {
+            plan = plans.get(0);
+        }
+        return plan;
     }
 }
