@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(page='Training Plan')">
+    <title>Training Plan</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: navbar"></div>
+
+    <div class="container-fluid">
+        <div class="row wrapper min-vh-100 flex-column flex-sm-row">
+            <div th:replace="fragments/header :: sidebar"></div>
+            <main class="col bg-faded p-3">
+                <div class="row flex-column no-gutters pl-2">
+                    <div class="col">
+                        <h2>
+                            Training Plan |
+                            <small>Overview</small>
+                        </h2>
+                    </div>
+                </div>
+                <div class="row flex-column no-gutters">
+                    <div class="col-12 col-md col-xl-8 p-1 m-2">
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-6">
+                                        <h5>Edit Workout Plan</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col p-3">
+                                <form class="px-5">
+                                    <div class="form-group">
+                                        <label for="workout-date">Please select a date to create or modify a workout plan:</label>
+                                        <input type="date" id="workout-date" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary form-control" onclick="editWorkout()">Edit Workout</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md col-xl-8 p-1 m-2">
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-7">
+                                        <h5>Saved Workout Plans</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <table class="table table-bordered table-striped table-hover text-center">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Swimming</th>
+                                        <th scope="col">Cycling</th>
+                                        <th scope="col">Running</th>
+                                        <th scope="col">View/Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:if="${plans.empty}">
+                                            <td colspan="5">No saved workout plans.</td>
+                                        </tr>
+                                        <tr th:each="plan:${plans}">
+                                            <th scope="row" th:text="${#dates.format(plan.date,'MM-dd-yyyy')}"></th>
+                                            <td th:if="${!plan.swimworkout.isEmpty()}" class="table-info text-info">
+                                                <i class="fas fa-swimmer fa-lg fa-fw"></i>
+                                            </td>
+                                            <td th:if="${plan.swimworkout.isEmpty()}" class="text-secondary">
+                                                <i class="fas fa-swimmer fa-lg fa-fw"></i>
+                                            </td>
+                                            <td th:if="${!plan.cycleworkout.isEmpty()}" class="table-warning text-warning">
+                                                <i class="fas fa-biking fa-lg fa-fw"></i>
+                                            </td>
+                                            <td th:if="${plan.cycleworkout.isEmpty()}" class="text-secondary">
+                                                <i class="fas fa-biking fa-lg fa-fw"></i>
+                                            </td>
+                                            <td th:if="${!plan.runworkout.isEmpty()}" class="table-danger text-danger">
+                                                <i class="fas fa-running fa-lg fa-fw"></i>
+                                            </td>
+                                            <td th:if="${plan.runworkout.isEmpty()}" class="text-secondary">
+                                                <i class="fas fa-running fa-lg fa-fw"></i>
+                                            </td>
+                                            <td><a class="btn btn-outline-dark btn-sm" th:href="@{/plan/{date}(date=${plan.date})}">Select</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+    <script th:src="@{/js/plans.js}"></script>
+</body>
+</html>
