@@ -1,4 +1,4 @@
-package com.depaul.trilog.swim;
+package com.depaul.trilog.services;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -6,6 +6,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.depaul.trilog.dao.SwimRepository;
+import com.depaul.trilog.entities.Swim;
 
 @Service
 public class SwimService {
