@@ -20,12 +20,33 @@ public class Plan {
     @Column(name = "date")
     private Date date = new Date();
 
-    @Column(name = "activity")
-    private int activity;
+    @Column(name = "swimworkout")
+    private String swimworkout;
 
-    @Column(name = "details")
-    private String details;
+    @Column(name = "swimdistance")
+    private double swimdistance;
 
-    @Column(name = "user")
+    @Column(name = "swimtime")
+    private int swimtime;
+
+    @Column(name = "cycleworkout")
+    private String cycleworkout;
+
+    @Column(name = "cycledistance")
+    private double cycledistance;
+
+    @Column(name = "cycletime")
+    private int cycletime;
+
+    @Column(name = "runworkout")
+    private String runworkout;
+
+    @Column(name = "rundistance")
+    private double rundistance;
+
+    @Column(name = "runtime")
+    private int runtime;
+
+    @Column(name = "userid")
     private int user;
 }
