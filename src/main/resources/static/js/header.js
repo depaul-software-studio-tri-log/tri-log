@@ -15,19 +15,23 @@ const wireChangePasswordButton = () => {
             };
 
             fetch(url, options)
-              .then(response => {
-                return response.json();
-              })
-              .then(response => {
-                if (response == true) {
-                    $('#toast-text').text("Password changed successfully");
-                    $('#toast').toast('show');
-                }
-                else {
+                .then(response => {
+                    return response.json();
+                })
+                .then(response => {
+                    if (response == true) {
+                        $('#toast-text').text("Password changed successfully");
+                        $('#toast').toast('show');
+                    }
+                    else {
+                        $('#toast-text').text("Password changed failed");
+                        $('#toast').toast('show');
+                    }
+                })
+                .catch(e => {
                     $('#toast-text').text("Password changed failed");
                     $('#toast').toast('show');
-                }
-              });
+                });
 
     });
 }
