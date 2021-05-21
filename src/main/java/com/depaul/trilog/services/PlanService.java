@@ -18,22 +18,37 @@ public class PlanService {
     @Autowired
     private UserService userService;
 
-    public List<Plan> getAllPlans() {
-        return this.planRepo.findAll();
+    public List<Plan> getAllPlansByUser() {
+        return this.planRepo.findPlansByUser(getCurrentUserId());
     }
 
     public void savePlan(Plan plan) {
-        User currentUser = userService.getCurrentUser();
-        plan.setUser(currentUser.getId());
+        Plan existingPlan = findByDate(plan.getDate());
+
+        if (existingPlan != null) {
+            plan.setId(existingPlan.getId());
+            plan.setUser(existingPlan.getUser());
+        }
+        else {
+            plan.setUser(getCurrentUserId());
+        }
+
         this.planRepo.save(plan);
     }
 
     public Plan findByDate(Date date) {
         Plan plan = null;
-        List<Plan> plans = this.planRepo.findByDate(date);
+
+        List<Plan> plans = this.planRepo.findPlansByDate(date);
         if (!plans.isEmpty()) {
-            plan = plans.get(0);
+            plan = plans.stream().filter(p -> p.getUser() == getCurrentUserId()).findAny().orElse(null);
         }
+
         return plan;
+    }
+
+    private int getCurrentUserId() {
+        User currentUser = userService.getCurrentUser();
+        return currentUser.getId();
     }
 }

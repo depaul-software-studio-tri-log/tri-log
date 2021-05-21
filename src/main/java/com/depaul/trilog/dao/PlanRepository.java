@@ -9,5 +9,6 @@ import java.util.List;
 
 @Repository
 public interface PlanRepository extends JpaRepository<Plan, Integer> {
-    List<Plan> findByDate(Date date);
+    List<Plan> findPlansByDate(Date date);
+    List<Plan> findPlansByUser(int id);
 }
