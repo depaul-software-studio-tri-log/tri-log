@@ -22,8 +22,8 @@ public class PasswordController {
     UserService userService;
 
     @PostMapping("/change-password")
+    //public boolean changePassword(@RequestBody PasswordChange passwords) {
     public boolean changePassword(@RequestBody PasswordChange passwords) {
-
         User currentUser = userService.getCurrentUser();
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
         if (!encoder.matches(passwords.oldPassword, currentUser.getPassword())) {

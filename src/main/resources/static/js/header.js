@@ -19,7 +19,14 @@ const wireChangePasswordButton = () => {
                 return response.json();
               })
               .then(response => {
-                alert(response);
+                if (response == true) {
+                    $('#toast-text').text("Password changed successfully");
+                    $('#toast').toast('show');
+                }
+                else {
+                    $('#toast-text').text("Password changed failed");
+                    $('#toast').toast('show');
+                }
               });
 
     });
@@ -45,7 +52,9 @@ window.showChangePasswordModal = () => {
     $("#verifyPasswordTB").val("");
     setChangePasswordEnabled();
     $('#changePasswordModal').modal();
-}
+};
+
+$('.toast').toast({delay: 1700});
 
 const setChangePasswordEnabled = () => {
     if ($("#oldPasswordTB").val().length > 0 &&
@@ -57,7 +66,7 @@ const setChangePasswordEnabled = () => {
     else {
         $('#changePasswordBTN').attr("disabled", "disabled");
     }
-}
+};
 
 
 

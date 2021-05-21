@@ -51,3 +51,24 @@
 .modal-body .inputrow input {
     flex: 2;
 }
+
+.toast {
+    width: 500px;
+    position: fixed;
+    top: 5px;
+    left: 50%;
+    margin-left: -250px;
+}
+
+.toast-body {
+    text-align: center
+}
+
+.toast-text {
+    font-weight: bold;
+    font-size: 1.2 em;
+}
+
+.dropdown-menu > span.dropdown-item {
+    cursor: pointer;
+}
