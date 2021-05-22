@@ -1,7 +1,7 @@
 package com.depaul.trilog.web;
 
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.ArgumentMatchers.anyObject;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
@@ -60,6 +60,6 @@ public class ProfileControllerTests {
         catch(Exception e) {
             fail("Post to /profile/update failed: " + e.getCause());
         }
-        verify(userRepository).save(anyObject());
+        verify(userRepository).save(any());
     }
 }
