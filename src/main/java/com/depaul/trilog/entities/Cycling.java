@@ -26,7 +26,7 @@ public class Cycling implements Serializable {
     private int time;
 
     @Column (name = "cyclingdate")
-    private Date runDate;
+    private Date cyclingDate;
 
     @ManyToOne
     @JoinColumn(name = "userid")
