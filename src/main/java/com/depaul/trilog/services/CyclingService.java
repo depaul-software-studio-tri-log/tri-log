@@ -5,10 +5,12 @@ import com.depaul.trilog.entities.Cycling;
 import com.depaul.trilog.entities.Run;
 import com.depaul.trilog.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CyclingService {
     @Autowired
     private CyclingRepository cyclingRepo;
