@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CyclingRepository extends JpaRepository<Cycling, Long> {
-    List<Cycling> findByUser (User user);
+    List<Cycling> findAllByUserOrderByCyclingDate (User user);
+
 }
