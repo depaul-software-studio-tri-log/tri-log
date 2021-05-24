@@ -21,10 +21,10 @@ public class CyclingController {
     @Autowired
     private CyclingService cyclingServ;
 
-    @RequestMapping
+    @RequestMapping(params = "viewCycling")
     public String viewCyclings(Model model) {
-        model.addAttribute("cycling", cyclingServ.getAllRuns());
-        return "/trilog/cycling";
+        model.addAttribute("cyclings", cyclingServ.getCyclingByUser());
+        return "cyclings/view_cycling";
     }
 
     @RequestMapping(params = "addCycling")
@@ -39,7 +39,7 @@ public class CyclingController {
         if(binding.hasErrors()) {
             return "cyclings/input_cycling";
         }
-        cyclingRepo.save(cycling);
-        return "redirect:/trilog/cyclings";
+        cyclingServ.addCycling(cycling);
+        return "redirect:/trilog/cycling?viewCycling";
     }
 }

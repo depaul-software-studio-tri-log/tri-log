@@ -32,6 +32,4 @@ public class Cycling implements Serializable {
     @JoinColumn(name = "userid")
     private User user;
 
-
-
 }

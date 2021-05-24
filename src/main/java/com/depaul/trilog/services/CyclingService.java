@@ -15,6 +15,9 @@ public class CyclingService {
     @Autowired
     private CyclingRepository cyclingRepo;
 
+    @Autowired
+    private UserService userService;
+
     public List<Cycling> getAllRuns(){
         List <Cycling> cyclings = new ArrayList<>();
         cyclingRepo.findAll().forEach(cycling-> cyclings.add(cycling));
@@ -22,13 +25,14 @@ public class CyclingService {
     }
 
     public Cycling addCycling(Cycling cycling) {
+        cycling.setUser(userService.getCurrentUser());
         cyclingRepo.save(cycling);
         return cycling;
     }
 
-    public List<Cycling> getRunsByUser(User user){
+    public List<Cycling> getCyclingByUser(){
         List <Cycling> CyclesByUserID = new ArrayList<>();
-        cyclingRepo.findAllByUserOrderByCyclingDate(user).forEach(cycling-> CyclesByUserID.add(cycling));
+        cyclingRepo.findAllByUserOrderByCyclingDate(userService.getCurrentUser()).forEach(cycling-> CyclesByUserID.add(cycling));
         return CyclesByUserID;
     }
 }
