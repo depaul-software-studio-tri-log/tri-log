@@ -13,7 +13,7 @@
 
             <div class = "container pt-2">
 
-                <div class="card" th:each = "race:${races}">
+                <div class="card mb-2" th:each = "race:${races}">
                     <div class="card-body">
                         <h4 clase="card-title"><span th:text="${race.name}"></span></h4>
                         <h5 class="card-subtitle"><span th:text="${race.date}"></span></h5>
@@ -22,7 +22,9 @@
                 </div>
             </div>
 
-            <a class="btn btn-lg btn-primary" th:href="@{/trilog/addRace}">Add Race</a>
+            <div class="mt-3 d-flex justify-content-center">
+                <a class="btn btn-lg btn-primary" th:href="@{/add-race}">Add Race</a>
+            </div>
         </main>
     </div>
 </div>
