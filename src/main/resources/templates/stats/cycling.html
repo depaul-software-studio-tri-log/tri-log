@@ -19,9 +19,9 @@
                         <table class = "table table-bordered table-striped">
                             <thead class = "thead-dark">
                             <tr>
-                                <th scope = "col"> Distance</th>
+                                <th scope = "col"> Date</th>
+                                <th scope = "col"> Distances </th>
                                 <th scope = "col"> Time </th>
-                                <th scope = "col"> Date </th>
 
                             </tr>
                             </thead>
@@ -29,6 +29,7 @@
                             <tr th:each = "datasData:${cyclings}">
                                 <td th:text = "${datasData.getCyclingDate()}"></td>
                                 <td th:text = "${datasData.getDistance()}"></td>
+                                <td th:text = "${datasData.getTime()}"></td>
                             </tr>
                             </tbody>
 
