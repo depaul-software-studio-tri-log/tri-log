@@ -16,6 +16,7 @@
                             Home |
                             <small>Welcome, <span th:text="${user.firstname}"></span>!</small>
                         </h2>
+                        <h4 th:if="${nextRace != null && nextRace.date != null}"><span th:text="'Your next race is: ' + ${nextRace.name} + ' on ' + ${nextRace.date}"></span></h4>
                     </div>
                 </div>
                 <div class="row flex-wrap no-gutters">

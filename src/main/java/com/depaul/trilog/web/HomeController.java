@@ -1,5 +1,7 @@
 package com.depaul.trilog.web;
 
+import com.depaul.trilog.dao.RaceRepository;
+import com.depaul.trilog.entities.User;
 import com.depaul.trilog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +14,14 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RaceRepository raceRepository;
+
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("user", userService.getCurrentUser());
+        User user = userService.getCurrentUser();
+        model.addAttribute("user", user);
+        model.addAttribute("nextRace", raceRepository.getNextRaceForUser(user.getId()));
         return "home";
     }
 }
