@@ -42,14 +42,17 @@ public class StatsController {
         List<Cycling> cyclings = cyclingServ.getCyclingByUser();
         List<String> datesdata = new ArrayList<>();
         List<Integer> distances = new ArrayList<>();
+        List<Integer> time = new ArrayList<>();
         cyclings.forEach(cycling-> {
             datesdata.add(cycling.getCyclingDate().toString());
             distances.add(cycling.getDistance());
+            time.add(cycling.getTime());
         });
 
         model.addAttribute("cyclings", cyclingServ.getCyclingByUser());
         model.addAttribute("dates", datesdata);
         model.addAttribute("distances", distances);
+        model.addAttribute("time", time);
         return "stats/cycling";
     }
 }
