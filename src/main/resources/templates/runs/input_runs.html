@@ -13,7 +13,7 @@
 			<div class = "container pt-2">
 				<h1 class = "display-4">Input Running</h1>
 
-				<form action = "#" th:action = "@{/trilog/runs}" th:object = "${newRun}"   method ="post" >
+				<form action = "#" th:action = "@{/trilog/run}" th:object = "${newRun}"   method ="post" >
 
 					<div class = "row form-group">
 						<div class = "col-lg-6">
@@ -38,7 +38,7 @@
 					</div>
 
 					<button type = "submit" class = "btn btn-lg btn-primary"> Submit </button>
-					<a class = "btn btn-lg btn-warning" th:ref = "@{/trilog/runs}"> Cancel </a>
+					<a class = "btn btn-lg btn-warning" th:ref = "@{/trilog/run}"> Cancel </a>
 
 				</form>
 			</div>

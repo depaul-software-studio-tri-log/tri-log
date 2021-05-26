@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.depaul.trilog.entities.Cycling;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,8 +64,8 @@ public class RunService {
 		List <Run> runs = new ArrayList<>();
 		runRepo.findByUser(user).forEach(runs::add);
 		return runs;
-	}
 
+	}
 
 
 
