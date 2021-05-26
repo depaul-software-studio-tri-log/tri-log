@@ -49,7 +49,7 @@ public class RunController {
 		
 		runRepo.save(run);
 		
-		return "redirect:/trilog/run";
+		return "redirect:/stats/running";
 	}
 	
 	
