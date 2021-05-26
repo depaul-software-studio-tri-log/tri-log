@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head th:replace="fragments/header :: header(page='Cycling Stats')">
-    <title>Cycling Stats</title>
+<head th:replace="fragments/header :: header(page='Running Stats')">
+    <title>Running Stats</title>
 </head>
 <body>
 <div th:replace="fragments/header :: navbar"></div>
@@ -25,6 +25,7 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     <tr th:each = "datasData:${runs}">
                         <td th:text = "${datasData.getRunDate()}"></td>
                         <td th:text = "${datasData.getDistance()}"></td>
