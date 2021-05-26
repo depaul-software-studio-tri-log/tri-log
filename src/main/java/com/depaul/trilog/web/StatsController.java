@@ -53,6 +53,7 @@ public class StatsController {
         model.addAttribute("distances", distances);
         model.addAttribute("time", time);
         return "stats/running";
+
     }
 
 
