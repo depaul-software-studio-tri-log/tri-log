@@ -8,8 +8,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 import com.depaul.trilog.configuration.TestUserConfiguration;
 import com.depaul.trilog.dao.RaceRepository;
-import com.depaul.trilog.dao.SportTypeRepository;
-import com.depaul.trilog.dao.UserRepository;
 import com.depaul.trilog.entities.Race;
 import com.depaul.trilog.entities.User;
 import com.depaul.trilog.services.UserService;
@@ -23,12 +21,10 @@ import org.springframework.context.annotation.Import;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import org.mockito.Mockito;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
 
 @Import(TestUserConfiguration.class)
