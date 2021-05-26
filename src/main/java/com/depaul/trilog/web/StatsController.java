@@ -1,9 +1,12 @@
 package com.depaul.trilog.web;
 
 import com.depaul.trilog.dao.CyclingRepository;
+
 import com.depaul.trilog.dao.RunRepository;
+
 import com.depaul.trilog.entities.Cycling;
 import com.depaul.trilog.entities.Goals;
+import com.depaul.trilog.entities.Run;
 import com.depaul.trilog.services.CyclingService;
 import com.depaul.trilog.services.RunService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,7 @@ public class StatsController {
 
     @Autowired
     private CyclingService cyclingServ;
+    private RunService runServ;
 
     @GetMapping("/stats/overall")
     public String statsOverall() {
@@ -33,9 +37,24 @@ public class StatsController {
     }
 
     @GetMapping("/stats/running")
-    public String statsRunning() {
+    public String viewRunning(Model model) {
+        //List<Run> runs = runServ.getRunsByUser();
+        List<String> datesdata = new ArrayList<>();
+        List<Integer> distances = new ArrayList<>();
+        List<Integer> time = new ArrayList<>();
+ /*       runs.forEach(run -> {
+            datesdata.add(run.getRunDate().toString());
+            distances.add(run.getDistance());
+            time.add(run.getTime());
+        });
+*/
+       // model.addAttribute("runnings", runServ.getRunsByUser());
+        model.addAttribute("dates", datesdata);
+        model.addAttribute("distances", distances);
+        model.addAttribute("time", time);
         return "stats/running";
     }
+
 
     @GetMapping("/stats/cycling")
     public String viewCycling(Model model) {
