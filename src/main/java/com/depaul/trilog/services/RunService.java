@@ -17,22 +17,22 @@ public class RunService {
 	@Autowired
 	private RunRepository runRepo;
 
+	@Autowired
+	private UserService userService;
 
 
 	public List<Run>getAllRuns(){
 		List <Run> runs = new ArrayList<>();
 		runRepo.findAll().forEach(run-> runs.add(run));
-
 		return runs;
 
 
 	}
 
-	public Run addRun(Run run) {
+	public Run addRun (Run run) {
+		run.setUser(userService.getCurrentUser());
 		runRepo.save(run);
-
 		return run;
-
 
 	}
 
@@ -59,14 +59,23 @@ public class RunService {
 	}
 
 
-	public List<Run> getRunsByUser(User user){
-		List <Run> runs = new ArrayList<>();
+/*	public List<Run> getRunsByUser(User user) {
+		List<Run> runs = new ArrayList<>();
 		runRepo.findByUser(user).forEach(runs::add);
+<<<<<<< Updated upstream
 		return runs;
 	}
+=======
+		return runs;*/
 
 
 
-
-
+		public List<Run> getRunsByUser(User user){
+			List <Run> RunsByUserID = new ArrayList<>();
+			runRepo.findByUser (userService.getCurrentUser()).forEach(runs-> RunsByUserID.add(runs));
+			return RunsByUserID;
+		
+	}
 }
+
+

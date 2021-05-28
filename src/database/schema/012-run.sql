@@ -4,7 +4,6 @@ distance INT,
 time  INT,
 rundate DATE,
 userid int,
-
 PRIMARY KEY(runid),
 Foreign Key(userid) references user(id)
 );
