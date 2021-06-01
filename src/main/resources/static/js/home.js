@@ -1,4 +1,5 @@
 const birthdate = new Date(userBirthdate);
+
 function calculateAge() {
     let currentDate = new Date();
     let age = currentDate.getUTCFullYear() - birthdate.getUTCFullYear();
@@ -12,6 +13,7 @@ function calculateAge() {
     }
     document.getElementById("age").innerHTML = age;
 }
+
 function getOrdinalSuffix(date) {
     let dateUTC = date.getUTCDate();
     let ordinalSuffix = "th";
@@ -27,6 +29,7 @@ function getOrdinalSuffix(date) {
     }
     return ordinalSuffix;
 }
+
 function formatBirthday() {
     let birthday = birthdate.toLocaleString('default',{month: 'long', day: 'numeric', timeZone: 'UTC'});
     let ordinalSuffix = getOrdinalSuffix(birthdate);
@@ -44,6 +47,7 @@ function convertHeightToFt() {
     convertedHeight = Math.floor(inches / 12) + "\'" + Math.round(inches % 12) + "\"";
     document.getElementById("height").innerHTML = convertedHeight;
 }
+
 function convertWeightToKg() {
     document.getElementById("weight").innerHTML = userWeight;
 }
