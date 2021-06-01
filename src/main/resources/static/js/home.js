@@ -36,6 +36,7 @@ function formatBirthday() {
 
     document.getElementById("birthday").innerHTML = birthday + ordinalSuffix;
 }
+
 function convertHeightToCm() {
     document.getElementById("height").innerHTML = userHeight;
 }
