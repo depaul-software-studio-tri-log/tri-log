@@ -66,7 +66,7 @@
                                             <td colspan="5">No saved workout plans.</td>
                                         </tr>
                                         <tr th:each="plan:${plans}">
-                                            <th scope="row" th:text="${#dates.format(plan.date,'MM-dd-yyyy')}"></th>
+                                            <th scope="row" th:text="${#dates.format(plan.date,'MM/dd/yyyy')}"></th>
                                             <td th:if="${!plan.swimworkout.isEmpty()}" class="table-info text-info">
                                                 <i class="fas fa-swimmer fa-lg fa-fw"></i>
                                             </td>
