@@ -67,22 +67,22 @@
                                         </tr>
                                         <tr th:each="plan:${plans}">
                                             <th scope="row" th:text="${#dates.format(plan.date,'MM/dd/yyyy')}"></th>
-                                            <td th:if="${!plan.swimworkout.isEmpty()}" class="table-info text-info">
+                                            <td th:if="${!plan.swimworkout.isEmpty() or plan.swimdistance != 0.0 or plan.swimtime != 0}" class="table-info text-info">
                                                 <i class="fas fa-swimmer fa-lg fa-fw"></i>
                                             </td>
-                                            <td th:if="${plan.swimworkout.isEmpty()}" class="text-secondary">
+                                            <td th:if="${plan.swimworkout.isEmpty() and plan.swimdistance == 0.0 and plan.swimtime == 0}" class="text-secondary">
                                                 <i class="fas fa-swimmer fa-lg fa-fw"></i>
                                             </td>
-                                            <td th:if="${!plan.cycleworkout.isEmpty()}" class="table-warning text-warning">
+                                            <td th:if="${!plan.cycleworkout.isEmpty() or plan.cycledistance != 0.0 or plan.cycletime != 0}" class="table-warning text-warning">
                                                 <i class="fas fa-biking fa-lg fa-fw"></i>
                                             </td>
-                                            <td th:if="${plan.cycleworkout.isEmpty()}" class="text-secondary">
+                                            <td th:if="${plan.cycleworkout.isEmpty() and plan.cycledistance == 0.0 and plan.cycletime == 0}" class="text-secondary">
                                                 <i class="fas fa-biking fa-lg fa-fw"></i>
                                             </td>
-                                            <td th:if="${!plan.runworkout.isEmpty()}" class="table-danger text-danger">
+                                            <td th:if="${!plan.runworkout.isEmpty() or plan.rundistance != 0.0 or plan.runtime != 0}" class="table-danger text-danger">
                                                 <i class="fas fa-running fa-lg fa-fw"></i>
                                             </td>
-                                            <td th:if="${plan.runworkout.isEmpty()}" class="text-secondary">
+                                            <td th:if="${plan.runworkout.isEmpty() and plan.rundistance == 0.0 and plan.runtime == 0}" class="text-secondary">
                                                 <i class="fas fa-running fa-lg fa-fw"></i>
                                             </td>
                                             <td><a class="btn btn-outline-dark btn-sm" th:href="@{/plan/{date}(date=${plan.date})}">Select</a></td>
