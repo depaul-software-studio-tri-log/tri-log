@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.depaul.trilog.entities.BikeMaintenance;
@@ -33,11 +34,11 @@ public class BikeMaintenanceController {
 	public String addMainNote(Model model) {
 		model.addAttribute("bikeMainNote", new BikeMaintenance());
 		
-		return ("bikeMaintenance/input_maintenanceNote");
+		return ("input_bike_maintenance_notes");
 	}
 	
 	
-	
+	@PostMapping
 	public String createMaintenanceNote(@ModelAttribute("bikeMainNote")BikeMaintenance bikeMainNote, BindingResult binding) {
 		if(binding.hasErrors()) {
 			return "bikeMaintenance/input_maintenanceNote";
