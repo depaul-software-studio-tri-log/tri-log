@@ -21,12 +21,6 @@ public class CyclingController {
     @Autowired
     private CyclingService cyclingServ;
 
-    @RequestMapping(params = "viewCycling")
-    public String viewCyclings(Model model) {
-        model.addAttribute("cyclings", cyclingServ.getCyclingByUser());
-        return "cyclings/view_cycling";
-    }
-
     @RequestMapping(params = "addCycling")
     public String addCycling(Model model) {
         model.addAttribute("newCycling", new Cycling());
@@ -40,6 +34,6 @@ public class CyclingController {
             return "cyclings/input_cycling";
         }
         cyclingServ.addCycling(cycling);
-        return "redirect:/trilog/cycling?viewCycling";
+        return "redirect:/stats/cycling";
     }
 }

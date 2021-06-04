@@ -32,7 +32,7 @@ public class CyclingService {
 
     public List<Cycling> getCyclingByUser(){
         List <Cycling> CyclesByUserID = new ArrayList<>();
-        cyclingRepo.findAllByUserOrderByCyclingDate(userService.getCurrentUser()).forEach(cycling-> CyclesByUserID.add(cycling));
+        cyclingRepo.findAllByUserOrderByCyclingDateDesc(userService.getCurrentUser()).forEach(cycling-> CyclesByUserID.add(cycling));
         return CyclesByUserID;
     }
 }
