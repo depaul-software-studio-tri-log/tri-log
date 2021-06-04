@@ -102,56 +102,140 @@
                             </div>
                             <div class="col">
                                 <div class="row flex-column no-gutters p-2">
-                                    <div class="col text-info p-1">
-                                        <span>
-                                            <i class="fas fa-swimmer fa-lg fa-fw"></i>
-                                            Swimming
-                                        </span>
-                                    </div>
-                                    <div class="col bg-light text-dark border border-info rounded p-1">
-                                        <p style="white-space: pre-wrap" th:text="${plan.swimworkout}"></p>
-                                        <div class="row no-gutters">
-                                            <div class="col">
-                                                <span th:text="'Total Distance (mi): ' + ${plan.swimdistance}"></span>
+                                    <div class="col" th:if="${!plan.swimworkout.isEmpty() or plan.swimdistance != 0.0 or plan.swimtime != 0}">
+                                        <div class="row flex-column no-gutters">
+                                            <div class="col text-info p-1">
+                                                <span>
+                                                    <i class="fas fa-swimmer fa-lg fa-fw"></i>
+                                                    Swimming
+                                                </span>
                                             </div>
-                                            <div class="col">
-                                                <span th:text="'Total Time (min): ' + ${plan.swimtime}"></span>
+                                            <div class="col bg-light text-dark border border-info rounded p-1">
+                                                <div class="row no-gutters border border-info rounded p-1 mb-1" th:if="${!plan.swimworkout.isEmpty()}">
+                                                    <div class="col">
+                                                        <span style="white-space: pre-wrap" th:text="${plan.swimworkout}"></span>
+                                                    </div>
+                                                </div>
+                                                <dl class="row flex-wrap no-gutters border border-info rounded pt-1 px-1 mb-0">
+                                                    <dt class="col-12 col-sm-5">Total Distance (mi):</dt>
+                                                    <dd class="col-12 col-sm">
+                                                        <span th:text="${plan.swimdistance}"></span>
+                                                    </dd>
+                                                    <div class="w-100"></div>
+                                                    <dt class="col-12 col-sm-5">Total Time (min):</dt>
+                                                    <dd class="col-12 col-sm">
+                                                        <span th:text="${plan.swimtime}"></span>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col" th:if="${plan.swimworkout.isEmpty() and plan.swimdistance == 0.0 and plan.swimtime == 0}">
+                                        <div class="row flex-column no-gutters">
+                                            <div class="col text-secondary p-1">
+                                                <span>
+                                                    <i class="fas fa-swimmer fa-lg fa-fw"></i>
+                                                    Swimming
+                                                </span>
+                                            </div>
+                                            <div class="col bg-light text-secondary text-center border border-secondary rounded p-1">
+                                                <span class="font-weight-light font-italic">
+                                                    <i class="fas fa-swimmer fa-4x fa-fw py-2"></i>
+                                                    <br>
+                                                    Rest
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="w-100 dropdown-divider"></div>
-                                    <div class="col text-warning p-1">
-                                        <span>
-                                            <i class="fas fa-biking fa-lg fa-fw"></i>
-                                            Cycling
-                                        </span>
-                                    </div>
-                                    <div class="col bg-light text-dark border border-warning rounded p-1">
-                                        <p style="white-space: pre-wrap" th:text="${plan.cycleworkout}"></p>
-                                        <div class="row no-gutters">
-                                            <div class="col">
-                                                <span th:text="'Total Distance (mi): ' + ${plan.cycledistance}"></span>
+                                    <div class="col" th:if="${!plan.cycleworkout.isEmpty() or plan.cycledistance != 0.0 or plan.cycletime != 0}">
+                                        <div class="row flex-column no-gutters">
+                                            <div class="col text-warning p-1">
+                                                <span>
+                                                    <i class="fas fa-biking fa-lg fa-fw"></i>
+                                                    Cycling
+                                                </span>
                                             </div>
-                                            <div class="col">
-                                                <span th:text="'Total Time (min): ' + ${plan.cycletime}"></span>
+                                            <div class="col bg-light text-dark border border-warning rounded p-1">
+                                                <div class="row no-gutters border border-warning rounded p-1 mb-1" th:if="${!plan.cycleworkout.isEmpty()}">
+                                                    <div class="col">
+                                                        <span style="white-space: pre-wrap" th:text="${plan.cycleworkout}"></span>
+                                                    </div>
+                                                </div>
+                                                <dl class="row flex-wrap no-gutters border border-warning rounded pt-1 px-1 mb-0">
+                                                    <dt class="col-12 col-sm-5">Total Distance (mi):</dt>
+                                                    <dd class="col-12 col-sm">
+                                                        <span th:text="${plan.cycledistance}"></span>
+                                                    </dd>
+                                                    <div class="w-100"></div>
+                                                    <dt class="col-12 col-sm-5">Total Time (min):</dt>
+                                                    <dd class="col-12 col-sm">
+                                                        <span th:text="${plan.cycletime}"></span>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col" th:if="${plan.cycleworkout.isEmpty() and plan.cycledistance == 0.0 and plan.cycletime == 0}">
+                                        <div class="row flex-column no-gutters">
+                                            <div class="col text-secondary p-1">
+                                                <span>
+                                                    <i class="fas fa-biking fa-lg fa-fw"></i>
+                                                    Cycling
+                                                </span>
+                                            </div>
+                                            <div class="col bg-light text-secondary text-center border border-secondary rounded p-1">
+                                                <span class="font-weight-light font-italic">
+                                                    <i class="fas fa-biking fa-4x fa-fw py-2"></i>
+                                                    <br>
+                                                    Rest
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="w-100 dropdown-divider"></div>
-                                    <div class="col text-danger p-1">
-                                        <span>
-                                            <i class="fas fa-running fa-lg fa-fw"></i>
-                                            Running
-                                        </span>
-                                    </div>
-                                    <div class="col bg-light text-dark border border-danger rounded p-1">
-                                        <p style="white-space: pre-wrap" th:text="${plan.runworkout}"></p>
-                                        <div class="row no-gutters">
-                                            <div class="col">
-                                                <span th:text="'Total Distance (mi): ' + ${plan.rundistance}"></span>
+                                    <div class="col" th:if="${!plan.runworkout.isEmpty() or plan.rundistance != 0.0 or plan.runtime != 0}">
+                                        <div class="row flex-column no-gutters">
+                                            <div class="col text-danger p-1">
+                                                <span>
+                                                    <i class="fas fa-running fa-lg fa-fw"></i>
+                                                    Running
+                                                </span>
                                             </div>
-                                            <div class="col">
-                                                <span th:text="'Total Time (min): ' + ${plan.runtime}"></span>
+                                            <div class="col bg-light text-dark border border-danger rounded p-1">
+                                                <div class="row no-gutters border border-danger rounded p-1 mb-1" th:if="${!plan.runworkout.isEmpty()}">
+                                                    <div class="col">
+                                                        <span style="white-space: pre-wrap" th:text="${plan.runworkout}"></span>
+                                                    </div>
+                                                </div>
+                                                <dl class="row flex-wrap no-gutters border border-danger rounded pt-1 px-1 mb-0">
+                                                    <dt class="col-12 col-sm-5">Total Distance (mi):</dt>
+                                                    <dd class="col-12 col-sm">
+                                                        <span th:text="${plan.rundistance}"></span>
+                                                    </dd>
+                                                    <div class="w-100"></div>
+                                                    <dt class="col-12 col-sm-5">Total Time (min):</dt>
+                                                    <dd class="col-12 col-sm">
+                                                        <span th:text="${plan.runtime}"></span>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col" th:if="${plan.runworkout.isEmpty() and plan.rundistance == 0.0 and plan.runtime == 0}">
+                                        <div class="row flex-column no-gutters">
+                                            <div class="col text-secondary p-1">
+                                                <span>
+                                                    <i class="fas fa-running fa-lg fa-fw"></i>
+                                                    Running
+                                                </span>
+                                            </div>
+                                            <div class="col bg-light text-secondary text-center border border-secondary rounded p-1">
+                                                <span class="font-weight-light font-italic">
+                                                    <i class="fas fa-running fa-4x fa-fw py-2"></i>
+                                                    <br>
+                                                    Rest
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
