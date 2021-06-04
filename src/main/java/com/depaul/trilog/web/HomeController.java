@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Calendar;
 import java.util.Date;
 
 @Controller
@@ -30,9 +31,16 @@ public class HomeController {
         model.addAttribute("user", user);
         model.addAttribute("nextRace", raceRepository.getNextRaceForUser(user.getId()));
 
-        Date dateToday = new Date();
+        Calendar calendar = Calendar.getInstance();
+        Date dateToday = calendar.getTime();
         Plan planToday = planService.findByDate(dateToday);
         model.addAttribute("planToday", planToday);
+
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        Date dateTomorrow = calendar.getTime();
+        Plan planTomorrow = planService.findByDate(dateTomorrow);
+        model.addAttribute("planTomorrow", planTomorrow);
+
         return "home";
     }
 }
