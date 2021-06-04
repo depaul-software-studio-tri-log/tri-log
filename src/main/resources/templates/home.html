@@ -154,7 +154,7 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="row flex-column no-gutters p-2">
+                                <div class="row flex-column no-gutters p-2" th:if="${planToday != null}">
                                     <div class="col text-info p-1">
                                         <span>
                                             <i class="fas fa-swimmer fa-lg fa-fw"></i>
@@ -162,13 +162,15 @@
                                         </span>
                                     </div>
                                     <div class="col bg-light text-dark border border-info rounded p-1">
-                                        <span>
-                                            200 yards - Warm up<br>
-                                            4 x 50 yards (30s rest)<br>
-                                            4 x 25 yards<br>
-                                            4 x 50 yards (30s rest)<br>
-                                            200 yards - Cool down
-                                        </span>
+                                        <p style="white-space: pre-wrap" th:text="${planToday.swimworkout}"></p>
+                                        <div class="row no-gutters">
+                                            <div class="col">
+                                                <span th:text="'Total Distance (mi): ' + ${planToday.swimdistance}"></span>
+                                            </div>
+                                            <div class="col">
+                                                <span th:text="'Total Time (min): ' + ${planToday.swimtime}"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="w-100 dropdown-divider"></div>
                                     <div class="col text-warning p-1">
@@ -178,10 +180,15 @@
                                         </span>
                                     </div>
                                     <div class="col bg-light text-dark border border-warning rounded p-1">
-                                        <span>
-                                            10 min - Warm-up<br>
-                                            30 min - Moderate
-                                        </span>
+                                        <p style="white-space: pre-wrap" th:text="${planToday.cycleworkout}"></p>
+                                        <div class="row no-gutters">
+                                            <div class="col">
+                                                <span th:text="'Total Distance (mi): ' + ${planToday.cycledistance}"></span>
+                                            </div>
+                                            <div class="col">
+                                                <span th:text="'Total Time (min): ' + ${planToday.cycletime}"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="w-100 dropdown-divider"></div>
                                     <div class="col text-danger p-1">
@@ -191,9 +198,15 @@
                                         </span>
                                     </div>
                                     <div class="col bg-light text-dark border border-danger rounded p-1">
-                                        <span>
-                                            30 min - Easy
-                                        </span>
+                                        <p style="white-space: pre-wrap" th:text="${planToday.runworkout}"></p>
+                                        <div class="row no-gutters">
+                                            <div class="col">
+                                                <span th:text="'Total Distance (mi): ' + ${planToday.rundistance}"></span>
+                                            </div>
+                                            <div class="col">
+                                                <span th:text="'Total Time (min): ' + ${planToday.runtime}"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
