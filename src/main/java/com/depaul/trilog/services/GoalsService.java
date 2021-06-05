@@ -6,10 +6,14 @@ import com.depaul.trilog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class GoalsService {
 
-    private final GoalsRepository goalsRepository;
+    @Autowired
+    private GoalsRepository goalsRepository;
 
     @Autowired
     private UserService userService;
@@ -20,11 +24,18 @@ public class GoalsService {
     }
 
     public void addNewGoal(Goals goals) {
-        goals.setUser_id(userService.getCurrentUser().getId());
+        goals.setUserid(userService.getCurrentUser().getId());
         goalsRepository.save(goals);
     }
 
-//    public List<Goal> getGoals(){
-//        return goalsRepository.findByUser_id(userService.getCurrentUser().getId());
-//    }
+    public List<Goals> getGoalsByActivity(int activity) {
+        List<Goals> goalsByActivity = this.goalsRepository.findGoalsByActivity(activity);
+        List<Goals> goals = goalsByActivity.stream().filter(g -> g.getUserid() == userService.getCurrentUser().getId())
+                .collect(Collectors.toList());
+        return goals;
+    }
+
+    public List<Goals> getAllGoalsByUser() {
+        return this.goalsRepository.findGoalsByUseridOrderByIdDesc(userService.getCurrentUser().getId());
+    }
 }

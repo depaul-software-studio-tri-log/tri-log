@@ -13,11 +13,10 @@
         <img src="/img/trilog_icon.png" class="d-inline-block align-top" width="30" height="30" alt="Tri-Log">
         <span class="pl-2">Tri-Log</span>
     </a>
-    <a class="btn btn-success ml-auto mr-1" href="/trilog/swim?addSwim">Log Activity</a>
-    <ul class="navbar-nav flex-row">
+    <ul class="navbar-nav flex-row ml-auto mr-1">
         <li class="nav-item dropdown dropleft pl-2">
             <a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user-circle fa-lg"></i>
+                <i class="fas fa-user-circle fa-lg fa-fw"></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbardrop">
                 <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i> <span class="pl2">Logout</span></a>
@@ -25,7 +24,7 @@
             </div>
         </li>
         <li class="nav-item pl-2">
-            <a class="nav-link" href="#"><i class="far fa-bell fa-lg"></i></a>
+            <a class="nav-link" href="#"><i class="far fa-bell fa-lg fa-fw"></i></a>
         </li>
     </ul>
 
@@ -41,15 +40,15 @@
                 <div class="modal-body">
                     <div class="inputrow d-flex">
                         <label class="mt-3" for="oldPasswordTB">Current Password</label>
-                        <input class="mt-3" type="password" id="oldPasswordTB"></input>
+                        <input class="mt-3" type="password" id="oldPasswordTB">
                     </div>
                     <div class="inputrow d-flex">
                         <label class="mt-3" for="newPasswordTB">New Password</label>
-                        <input class="mt-3" type="password" id="newPasswordTB" ></input>
+                        <input class="mt-3" type="password" id="newPasswordTB" >
                     </div>
                     <div class="inputrow d-flex">
                         <label class="mt-3" for="verifyPasswordTB">Verify Password</label>
-                        <input class="mt-3" type="password" id="verifyPasswordTB"></input>
+                        <input class="mt-3" type="password" id="verifyPasswordTB">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -77,7 +76,7 @@
     <ul class="navbar-nav flex-row">
         <li class="nav-item dropdown dropleft pl-2">
             <a class="nav-link" href="#" id="navbardroplogin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user-circle fa-lg"></i>
+                <i class="fas fa-user-circle fa-lg fa-fw"></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbardroplogin">
                 <a class="dropdown-item" href="/login"><i class="fas fa-sign-in-alt"></i> <span class="pl2">Login</span></a>
@@ -94,51 +93,51 @@
         <div class="collapse navbar-collapse sidebar">
             <ul class="flex-column navbar-nav w-100 justify-content-start">
                 <li class="nav-item">
-                    <a class="nav-link pl-0" href="/"><i class="fas fa-home fa-lg"></i> <span class="pl-2">Home</span></a>
+                    <a class="nav-link pl-0" href="/"><i class="fas fa-home fa-lg fa-fw"></i> <span class="pl-2">Home</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link pl-0" href="/profile"><i class="fas fa-user fa-lg"></i> <span class="pl-2">My Profile</span></a>
+                    <a class="nav-link pl-0" href="/profile"><i class="fas fa-user fa-lg fa-fw"></i> <span class="pl-2">My Profile</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link pl-0" href="/calendar"><i class="fas fa-calendar fa-lg"></i> <span class="pl-2">Calendar</span></a>
+                    <a class="nav-link pl-0" href="/goals"><i class="fas fa-bullseye fa-lg fa-fw"></i> <span class="pl-2">Goals</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link pl-0" href="/goals"><i class="fas fa-bullseye fa-lg"></i> <span class="pl-2">Goals</span></a>
+                    <a class="nav-link pl-0" href="/races"><i class="fas fa-flag-checkered fa-lg fa-fw"></i> <span class="pl-2">Races</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link pl-0" href="/plan"><i class="fas fa-edit fa-lg"></i> <span class="pl-2">Training Plan</span></a>
+                    <a class="nav-link pl-0" href="/plan"><i class="fas fa-calendar fa-lg fa-fw"></i> <span class="pl-2">Training Plan</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link pl-0" href="/trilog/run?addRun"><i class="fas fa-edit fa-lg"></i> <span class="pl-2">Input Run</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link pl-0" href="/trilog/cycling?addCycling"><i class="fas fa-edit fa-lg"></i> <span class="pl-2">Input Cycling</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link pl-0" href="/races"><i class="fas fa-bullseye fa-lg"></i> <span class="pl-2">Races</span></a>
-                </li>
-                
                 <li class="nav-item dropdown">
-                    <a class="nav-link pl-0 dropdown-toggle" href="#" id="sidebardrop" data-toggle="dropdown">
-                        <i class="fas fa-chart-line fa-lg"></i> <span class="pl-2">Stats</span>
+                    <a class="nav-link pl-0 dropdown-toggle" href="#" id="sidebardroplog" data-toggle="dropdown">
+                        <i class="fas fa-edit fa-lg fa-fw"></i> <span class="pl-2">Log Activity</span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/stats/overall"><i class="fas fa-chart-bar"></i> Overall</a>
+                        <a class="dropdown-item" href="/trilog/swim?addSwim"><i class="fas fa-swimmer fa-fw"></i> Input Swim</a>
+                        <a class="dropdown-item" href="/trilog/cycling?addCycling"><i class="fas fa-biking fa-fw"></i> Input Cycle</a>
+                        <a class="dropdown-item" href="/trilog/run?addRun"><i class="fas fa-running fa-fw"></i> Input Run</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link pl-0 dropdown-toggle" href="#" id="sidebardropstats" data-toggle="dropdown">
+                        <i class="fas fa-chart-line fa-lg fa-fw"></i> <span class="pl-2">Stats</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/stats/overall"><i class="fas fa-chart-bar fa-fw"></i> Overall</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/trilog/swim"><i class="fas fa-swimmer"></i> Swimming</a>
-                        <a class="dropdown-item" href="/stats/running"><i class="fas fa-running"></i> Running</a>
-                        <a class="dropdown-item" href="/stats/cycling"><i class="fas fa-biking"></i> Cycling</a>
+                        <a class="dropdown-item" href="/trilog/swim"><i class="fas fa-swimmer fa-fw"></i> Swimming</a>
+                        <a class="dropdown-item" href="/stats/cycling"><i class="fas fa-biking fa-fw"></i> Cycling</a>
+                        <a class="dropdown-item" href="/stats/running"><i class="fas fa-running fa-fw"></i> Running</a>
                     </div>
                 </li>
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link pl-0 dropdown-toggle" href="#" id="sidebardrop" data-toggle="dropdown">
-                        <i class="fas fa-swatchbook"></i> <span class="pl-2">Gear</span>
+                        <i class="fas fa-swatchbook fa-lg fa-fw"></i> <span class="pl-2">Gear</span>
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/trilog/bikeMaintenanceNotes?addMaintenanceNote"><i class="fas fa-pen"></i> Add Maintenance Note</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="bikeMaintenanceNotes"><i class="fal fa-columns"></i> View Maintenance Notes</a>
+                        <a class="dropdown-item" href="/trilog/bikeMaintenanceNotes"><i class="fal fa-columns"></i> View Maintenance Notes</a>
 
                     </div>
                 </li>

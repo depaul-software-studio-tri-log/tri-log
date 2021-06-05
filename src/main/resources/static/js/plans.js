@@ -1,4 +1,5 @@
-let currentDate = new Date().toLocaleDateString('en-CA')
+let currentDate = new Date().toLocaleDateString('en-CA');
+
 document.getElementById("workout-date").value = currentDate;
 
 function editWorkout() {
