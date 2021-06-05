@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(page='Bike Maintenance Notes')">
+    <title>Bike Maintenance Notes</title>
+</head>
+<body>
+	<div th:replace="fragments/header :: navbar"></div>
+
+	<div class="container-fluid">
+		<div class="row wrapper min-vh-100 flex-column flex-sm-row">
+			<div th:replace="fragments/header :: sidebar"></div>
+			<main class="col bg-faded">
+
+				<div class="container pt-2">
+					<h1 class = "display-4">Notes</h1>
+
+					<table class = "table table-bordered table-striped">
+						<thead class = "thead-dark">
+						<tr>
+							<th scope = "col"> Note</th>
+							<th scope = "col"> Date </th>
+
+						</tr>
+						</thead>
+
+						<tbody>
+						<tr th:if = "${bikeMainNotes.empty}">
+							<td colspan = "2"> No Notes yet</td>
+						</tr>
+
+						<tr th:each = "note:${bikeMainNotes}">
+							<td th:text = "${note.note}"></td>
+							<td th:text = "${note.date}"></td>
+						</tr>
+						</tbody>
+
+					</table>
+
+					<a class="btn btn-lg btn-primary" th:href="@{/trilog/bikeMaintenanceNotes?addMaintenanceNote}"> Add Note </a>
+				</div>
+
+			</main>
+		</div>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
