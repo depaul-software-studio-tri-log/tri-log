@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(page='Goals')">
+    <title>Goals</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: navbar"></div>
+
+    <div class="container-fluid">
+        <div class="row wrapper min-vh-100 flex-column flex-sm-row">
+            <div th:replace="fragments/header :: sidebar"></div>
+            <main class="col bg-faded p-3">
+                <div class="row flex-column no-gutters pl-2">
+                    <div class="col">
+                        <h2>
+                            Goals |
+                            <small>Overview</small>
+                        </h2>
+                    </div>
+                </div>
+                <div class="row flex-column no-gutters">
+                    <div class="col-12 col-md col-xl-8 p-1 m-2">
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-6">
+                                        <h5>Create New Goal</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col p-3">
+                                <form th:action="@{/addGoal}" th:object = "${goals}" class="form-group px-5" method ="post">
+                                    <div class="form-group row">
+                                        <label for="goalname" class="col-sm-3 col-form-label">Goal Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="goalname" name="goalname" th:field = "*{goalname}" placeholder = "Goal Name">
+                                        </div>
+                                    </div>
+                                    <fieldset id="activity" class="form-group row">
+                                        <label for="activity" class="col-sm-3">Activity</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" class="form-check-input" name="activitySelection1" id="swimmingChoice" value=1  th:field = "*{activity}" checked="checked">
+                                                <label class="form-check-label" for="swimmingChoice">Swimming</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" class="form-check-input" name="activitySelection2" id="runningChoice" value=3 th:field = "*{activity}">
+                                                <label class="form-check-label" for="runningChoice">Running</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" class="form-check-input" name="activitySelection3" id="cyclingChoice" value=2 th:field = "*{activity}">
+                                                <label class="form-check-label" for="cyclingChoice">Cycling</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-group row slidecontainer">
+                                        <label for="milesRange" class="col-sm-3 col-form-label">Distance Goal<br>(Miles)</label>
+                                        <div class="col-sm-9">
+                                            <div class="row no-gutters">
+                                                <input type="range" min="1" max="100" value="5" class="form-control-range slider col-sm-8 mr-2" id="milesRange">
+                                                <input type="number" min="1" name="miles" value="5" id="milesBox" class="form-control goals-numbers col-sm-2 pl-2" th:field = "*{distance}" aria-label="distance">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row slidecontainer">
+                                        <label for="milesRangeProgress" class="col-sm-3 col-form-label">Distance Progress<br>(Miles)</label>
+                                        <div class="col-sm-9">
+                                            <div class="row no-gutters">
+                                                <input type="range" min="1" max="100" value="5" class="form-control-range slider col-sm-8 mr-2" id="milesRangeProgress">
+                                                <input type="number" min="0" name="miles" value="5" id="milesBoxProgress" class="form-control goals-numbers col-sm-2 pl-2" th:field = "*{distanceprogress}" aria-label="distanceProgress">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="time" class="col-sm-3 col-form-label">Time Goal<br>(Minutes)</label>
+                                        <div class="col-sm-9">
+                                            <div class="row no-gutters">
+                                                <input type="number" id="time" name="time" min="1" class="form-control goals-numbers col-sm-2 pl-2" th:field = "*{minutes}" placeholder = "minutes">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="timeProgress" class="col-sm-3 col-form-label">Time Progress<br>(Minutes)</label>
+                                        <div class="col-sm-9">
+                                            <div class="row no-gutters">
+                                                <input type="number" id="timeProgress" name="timeProgress" min="0" class="form-control goals-numbers col-sm-2 pl-2" th:field = "*{minutesprogress}" placeholder = "minutes">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="notes" class="col-sm-3 col-form-label">Notes</label><br>
+                                        <div class="col-sm-9">
+                                            <div class="row no-gutters">
+                                                <textarea class="form-control col-sm" rows = "5" cols = "60" name = "notes" id="notes" th:field = "*{note}" placeholder = "Notes"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group px-5">
+                                        <input type = "submit" value = "Create Goal" class="btn btn-primary form-control" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md col-xl-8 p-1 m-2">
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-7">
+                                        <h5>Current Goals</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <table class="table table-bordered table-striped table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Goal Name</th>
+                                            <th scope="col">Activity</th>
+                                            <th scope="col">Distance Progress</th>
+                                            <th scope="col">Time Progress</th>
+                                            <th scope="col">Notes</th>
+                                            <th scope="col">View/Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:if="${allGoals.empty}">
+                                            <td colspan="6">No goals created.</td>
+                                        </tr>
+                                        <tr th:each="goal:${allGoals}">
+                                            <th scope="row" th:text="${goal.getGoalname()}"></th>
+                                            <td th:if="${goal.getActivity() == 1}" class="table-info text-info">
+                                                <i class="fas fa-swimmer fa-lg fa-fw"></i>
+                                            </td>
+                                            <td th:if="${goal.getActivity() == 2}" class="table-warning text-warning">
+                                                <i class="fas fa-biking fa-lg fa-fw"></i>
+                                            </td>
+                                            <td th:if="${goal.getActivity() == 3}" class="table-danger text-danger">
+                                                <i class="fas fa-running fa-lg fa-fw"></i>
+                                            </td>
+                                            <td th:text="${goal.getDistanceprogress()} + '/' + ${goal.getDistance()}"></td>
+                                            <td th:text="${goal.getMinutesprogress()} + '/' + ${goal.getMinutes()}"></td>
+                                            <td th:text="${goal.getNote()}"></td>
+                                            <td><a class="btn btn-outline-dark btn-sm" th:href="@{/goals/{id}(id=${goal.getId()})}">Select</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+    <script th:src="@{/js/goals.js}"></script>
+</body>
+</html>

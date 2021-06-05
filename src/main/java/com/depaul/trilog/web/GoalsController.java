@@ -6,6 +6,7 @@ import com.depaul.trilog.services.GoalsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
 
@@ -20,7 +21,14 @@ public class GoalsController {
     @GetMapping("/goals")
     public String goals(Model model) {
         model.addAttribute("goals", new Goals());
-        return "goals";
+        model.addAttribute("allGoals", goalsService.getAllGoalsByUser());
+        return "goals/goals";
+    }
+
+    @GetMapping("/goals/{id}")
+    public String editGoal(@PathVariable(value="id") int id, Model model) {
+        model.addAttribute("goals", goalRepo.findFirstById(id));
+        return "goals/goals-edit";
     }
 
     @PostMapping("/addGoal")

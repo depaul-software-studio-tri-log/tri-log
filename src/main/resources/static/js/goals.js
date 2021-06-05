@@ -1,12 +1,24 @@
-var slider = document.getElementById("milesRange");
-var output = document.getElementById("milesBox");
-output.innerHTML = slider.value;
+var sliderGoal = document.getElementById("milesRange");
+var outputGoal = document.getElementById("milesBox");
 
-slider.onchange = function() {
-    output.value = this.value;
+var sliderProgress = document.getElementById("milesRangeProgress");
+var outputProgress = document.getElementById("milesBoxProgress");
+
+sliderGoal.value = outputGoal.value;
+sliderProgress.value = outputProgress.value;
+
+sliderGoal.onchange = function() {
+    outputGoal.value = this.value;
 }
-output.onchange = function(){
-    slider.value = output.value;
+outputGoal.onchange = function(){
+    sliderGoal.value = outputGoal.value;
+}
+
+sliderProgress.onchange = function() {
+    outputProgress.value = this.value;
+}
+outputProgress.onchange = function(){
+    sliderProgress.value = outputProgress.value;
 }
 
 document.getElementById("swimmingChoice").setAttribute("checked","checked")
