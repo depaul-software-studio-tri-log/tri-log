@@ -16,12 +16,16 @@ public class Goals {
     private int activity;
     @Column(name = "distance")
     private int distance;
+    @Column(name = "distanceprogress")
+    private int distanceprogress;
     @Column(name = "minutes")
     private int minutes;
+    @Column(name = "minutesprogress")
+    private int minutesprogress;
     @Column(name = "note")
     private String note;
     @Column(name = "user_id")
-    private int user_id;
+    private int userid;
 
     public int getId() {
         return id;
@@ -55,12 +59,28 @@ public class Goals {
         this.distance = distance;
     }
 
+    public int getDistanceprogress() {
+        return distanceprogress;
+    }
+
+    public void setDistanceprogress(int distanceprogress) {
+        this.distanceprogress = distanceprogress;
+    }
+
     public int getMinutes() {
         return minutes;
     }
 
     public void setMinutes(int minutes) {
         this.minutes = minutes;
+    }
+
+    public int getMinutesprogress() {
+        return minutesprogress;
+    }
+
+    public void setMinutesprogress(int minutesprogress) {
+        this.minutesprogress = minutesprogress;
     }
 
     public String getNote() {
@@ -71,11 +91,11 @@ public class Goals {
         this.note = note;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserid() {
+        return userid;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 }
