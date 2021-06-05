@@ -63,11 +63,11 @@ class HomeControllerTests {
                     .andExpect(model().attributeExists("runDistanceProgress"))
                     .andExpect(model().attributeExists("runTimeProgress"))
                     .andExpect(view().name("home"));
+
+            verify(planService, times(2)).findByDate(any());
         }
         catch (Exception e) {
             fail("Get request to / failed: " + e.getCause());
         }
-
-        verify(planService, times(2)).findByDate(any());
     }
 }
