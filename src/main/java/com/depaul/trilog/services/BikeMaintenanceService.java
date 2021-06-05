@@ -16,8 +16,12 @@ public class BikeMaintenanceService {
 	@Autowired
 	BikeMaintenanceRepository bikeMainRepo;
 	
+    @Autowired
+    private UserService userService;
+	
 	
 	public BikeMaintenance addBikeMainNote(BikeMaintenance bikeMainNote) {
+		bikeMainNote.setUser(userService.getCurrentUser());
 		return bikeMainRepo.save(bikeMainNote);
 		
 		
@@ -30,6 +34,15 @@ public class BikeMaintenanceService {
 		
 		
 		return mainNotes;
+		
+	}
+	
+	public List<BikeMaintenance> getNotesByUser(){
+		List <BikeMaintenance> mainNotesByUser = new ArrayList<BikeMaintenance>();
+		bikeMainRepo.findAllByUser(userService.getCurrentUser()).forEach(note -> mainNotesByUser.add(note));
+		
+		
+		return mainNotesByUser;
 		
 	}
 	

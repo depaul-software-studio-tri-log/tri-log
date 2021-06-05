@@ -23,8 +23,8 @@ public class BikeMaintenanceController {
 	@GetMapping
 	public String getbikeMainNotes(Model model) {
 		
-		model.addAttribute("bikeMainNotes", bikeMainServ.getMainNotes());
-		return("bikeMaintenance/allMaintenanceNotes");
+		model.addAttribute("bikeMainNotes", bikeMainServ.getNotesByUser());
+		return"bike_maintenance_notes";
 		
 		
 	}
