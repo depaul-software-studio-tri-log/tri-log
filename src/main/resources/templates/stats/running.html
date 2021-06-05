@@ -1,29 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head th:replace="fragments/header :: header(page='Running Stats')">
-    <title>Running Stats</title>
+<head th:replace="fragments/header :: header(page='Cycling Stats')">
+    <title>Cycling Stats</title>
 </head>
 <body>
-    <div th:replace="fragments/header :: navbar"></div>
+<div th:replace="fragments/header :: navbar"></div>
 
-    <div class="container-fluid">
-        <div class="row wrapper min-vh-100 flex-column flex-sm-row">
-            <div th:replace="fragments/header :: sidebar"></div>
-            <main class="col bg-faded">
-                <!-- ------------------------ -->
-                <!-- START: edit page content -->
-                <!-- ------------------------ -->
-                <div class="container p-3 m-1">
-                    <h2>Running Stats</h2>
-                    <small>Content goes here.</small>
-                </div>
-                <!-- ---------------------- -->
-                <!-- END: edit page content -->
-                <!-- ---------------------- -->
-            </main>
-        </div>
+<div class="container-fluid">
+    <div class="row wrapper min-vh-100 flex-column flex-sm-row">
+        <div th:replace="fragments/header :: sidebar"></div>
+
+        <main class="col bg-faded">
+            <div class="container p-3 m-1">
+                <h2>Running Stats</h2>
+                <div id="distances_chart_div"></div>
+                <h2 class = "display-4">Running</h2>
+
+                <table class = "table table-bordered table-striped">
+                    <thead class = "thead-dark">
+                    <tr>
+                        <th scope = "col"> Date</th>
+                        <th scope = "col"> Distances </th>
+                        <th scope = "col"> Time </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each = "datasData:${runs}">
+                        <td th:text = "${datasData.getRunDate()}"></td>
+                        <td th:text = "${datasData.getDistance()}"></td>
+                        <td th:text = "${datasData.getTime()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
     </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+<script th:src="@{/js/running.js}"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" th:inline="javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var distances = [[${distances}]];
+            var dates = [[${dates}]];
+            var time = [[${time}]];
+            var arrayData = new Array();
 
-    <div th:replace="fragments/footer :: footer"></div>
+            arrayData[0] = (['date', 'Distances(Miles)', 'Time(Mins)'])
+            for (i = 0; i < 5; i++) {
+                arrayData[i+ 1] = [dates[i], distances[i], time[i]];
+            }
+
+            var data = google.visualization.arrayToDataTable(arrayData, false);
+            var options = {'title':'Runs Graph',
+                'width':800,
+                'height':600,
+                hAxis: {
+                    title: 'Date'
+                },
+                vAxis: {
+                    title: 'Distances/Time',
+                }};
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('distances_chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+
 </body>
 </html>
