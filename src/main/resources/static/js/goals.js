@@ -21,4 +21,6 @@ outputProgress.onchange = function(){
     sliderProgress.value = outputProgress.value;
 }
 
-document.getElementById("swimmingChoice").setAttribute("checked","checked")
+if (document.getElementById("id") == null) {
+    document.getElementById("swimmingChoice").setAttribute("checked","checked");
+}
