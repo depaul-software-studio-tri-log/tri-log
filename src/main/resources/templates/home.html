@@ -85,7 +85,7 @@
                             <div class="col border-top border-secondary rounded-top text-light bg-dark">
                                 <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
                                     <div class="col-6">
-                                        <h5>Goals</h5>
+                                        <h5>Goals Progress Summary</h5>
                                     </div>
                                 </div>
                             </div>
@@ -96,13 +96,14 @@
                                             <i class="fas fa-swimmer fa-lg fa-fw"></i>
                                         </span>
                                         <div class="media-body">
-                                            <h6>Swimming Goals</h6>
+                                            <h6 class="mb-0">Swimming Goals</h6>
+                                            <small>Distance (Miles)</small>
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Miles</div>
+                                                <div class="progress-bar progress-bar-striped bg-info" role="progressbar" id="swim-distance-bar" th:style="'width:' + ${swimDistanceProgress} + '%'" th:attr="aria-valuenow=${swimDistanceProgress}" aria-valuemin="0" aria-valuemax="100" th:text="${swimDistanceProgress} + '%'"></div>
                                             </div>
-                                            <div class="w-100 m-3"></div>
+                                            <small>Time (Minutes)</small>
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">Time</div>
+                                                <div class="progress-bar progress-bar-striped bg-info" role="progressbar" id="swim-time-bar" th:style="'width:' + ${swimTimeProgress} + '%'" th:attr="aria-valuenow=${swimTimeProgress}" aria-valuemin="0" aria-valuemax="100" th:text="${swimTimeProgress} + '%'"></div>
                                             </div>
                                         </div>
                                     </li>
@@ -112,13 +113,14 @@
                                             <i class="fas fa-biking fa-lg fa-fw"></i>
                                         </span>
                                         <div class="media-body">
-                                            <h6>Cycling Goals</h6>
+                                            <h6 class="mb-0">Cycling Goals</h6>
+                                            <small>Distance (Miles)</small>
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">Miles</div>
+                                                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" id="cycle-distance-bar" th:style="'width:' + ${cycleDistanceProgress} + '%'" th:attr="aria-valuenow=${cycleDistanceProgress}" aria-valuemin="0" aria-valuemax="100" th:text="${cycleDistanceProgress} + '%'"></div>
                                             </div>
-                                            <div class="w-100 m-3"></div>
+                                            <small>Time (Minutes)</small>
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">Time</div>
+                                                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" id="cycle-time-bar" th:style="'width:' + ${cycleTimeProgress} + '%'" th:attr="aria-valuenow=${cycleTimeProgress}" aria-valuemin="0" aria-valuemax="100" th:text="${cycleTimeProgress} + '%'"></div>
                                             </div>
                                         </div>
                                     </li>
@@ -128,13 +130,14 @@
                                             <i class="fas fa-running fa-lg fa-fw"></i>
                                         </span>
                                         <div class="media-body">
-                                            <h6>Running Goals</h6>
+                                            <h6 class="mb-0">Running Goals</h6>
+                                            <small>Distance (Miles)</small>
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Miles</div>
+                                                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" id="run-distance-bar" th:style="'width:' + ${runDistanceProgress} + '%'" th:attr="aria-valuenow=${runDistanceProgress}" aria-valuemin="0" aria-valuemax="100" th:text="${runDistanceProgress} + '%'"></div>
                                             </div>
-                                            <div class="w-100 m-3"></div>
+                                            <small>Time (Minutes)</small>
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">Time</div>
+                                                <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" id="run-time-bar" th:style="'width:' + ${runTimeProgress} + '%'" th:attr="aria-valuenow=${runTimeProgress}" aria-valuemin="0" aria-valuemax="100" th:text="${runTimeProgress} + '%'"></div>
                                             </div>
                                         </div>
                                     </li>
