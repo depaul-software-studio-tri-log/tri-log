@@ -15,48 +15,50 @@ import com.depaul.trilog.services.RunService;
 @Controller
 @RequestMapping("/trilog/run")
 public class RunController {
-	
+
 	@Autowired
 	private RunRepository runRepo;
-	
+
 	@Autowired
 	private RunService runServ;
-	
+
 	@RequestMapping
 	public String viewRuns(Model model) {
 		model.addAttribute("runs", runServ.getAllRuns());
-		
-		
 		return "/trilog/run";
-		
+
 	}
-	
+
 	@RequestMapping(params = "addRun")
 	public String addRun(Model model) {
 		model.addAttribute("newRun", new Run());
-		
 		return "runs/input_runs";
-		
-		
+
+
 	}
-	
-	
+
+
 	@PostMapping
 	public String createRun(@ModelAttribute("newRun") Run run, BindingResult binding) {
 		if(binding.hasErrors()) {
 			return "runs/input_runs";
 		}
-		
-		runRepo.save(run);
-		
+		runServ.addRun(run);
 		return "redirect:/stats/running";
 	}
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 
 }
+
+
+	
+	
+	
+	
+	

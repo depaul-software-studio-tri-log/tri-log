@@ -1,11 +1,15 @@
 package com.depaul.trilog.web;
 
 import com.depaul.trilog.dao.CyclingRepository;
+
 import com.depaul.trilog.dao.RunRepository;
+
 import com.depaul.trilog.entities.Cycling;
 import com.depaul.trilog.entities.Goals;
+import com.depaul.trilog.entities.Run;
 import com.depaul.trilog.services.CyclingService;
 import com.depaul.trilog.services.RunService;
+import com.depaul.trilog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +26,12 @@ public class StatsController {
     @Autowired
     private CyclingService cyclingServ;
 
+    @Autowired
+    private RunRepository runRepo;
+
+    @Autowired
+    private RunService runServ;
+
     @GetMapping("/stats/overall")
     public String statsOverall() {
         return "stats/overall";
@@ -32,10 +42,31 @@ public class StatsController {
         return "stats/swimming";
     }
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/stats/running")
-    public String statsRunning() {
+
+    public String viewRun(Model model) {
+        List<Run> runs = runServ.getRunsByUser(userService.getCurrentUser());
+        List<String> datesdata = new ArrayList<>();
+        List<Integer> distances = new ArrayList<>();
+        List<Integer> time = new ArrayList<>();
+      runs.forEach(run -> {
+            datesdata.add(run.getRunDate().toString());
+            distances.add(run.getDistance());
+            time.add(run.getTime());
+        });
+
+
+        model.addAttribute("runs", runServ.getRunsByUser(userService.getCurrentUser()));
+        model.addAttribute("dates", datesdata);
+        model.addAttribute("distances", distances);
+        model.addAttribute("time", time);
         return "stats/running";
+
     }
+
 
     @GetMapping("/stats/cycling")
     public String viewCycling(Model model) {
