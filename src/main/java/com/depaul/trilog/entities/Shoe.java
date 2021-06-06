@@ -44,7 +44,7 @@ public class Shoe implements Serializable {
 	private User user;
 	
 	
-	@OneToMany
+	
 	@JoinColumn(name = "runID")
 	private Run runID;
 	
