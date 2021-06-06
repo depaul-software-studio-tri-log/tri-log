@@ -33,7 +33,7 @@ public class RunController {
 	public String addRun(Model model) {
 		model.addAttribute("newRun", new Run());
 		return "runs/input_runs";
-
+ 
 
 	}
 
