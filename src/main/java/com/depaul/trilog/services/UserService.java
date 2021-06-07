@@ -84,7 +84,6 @@ public class UserService {
             request.setEndpoint("mail/send");
             request.setBody(mail.build());
             Response response = sg.api(request);
-            logger.debug(response.getBody());
         } catch (IOException ex) {
             logger.info("Exception sending password reset email to user " + user.getId() + ": " + ex.getStackTrace());
             return;

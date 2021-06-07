@@ -21,7 +21,7 @@ class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-                .antMatchers("/login", "/css/**", "/img/**", "/js/**", "/webjars/bootstrap/**", "/webjars/font-awesome/**", "/forgot-password", "/request-password-reset")
+                .antMatchers("/login", "/css/**", "/img/**", "/js/**", "/webjars/**", "/forgot-password", "/request-password-reset", "/change-forgotten-password", "/invalid-reset-token", "/reset-password")
                 .permitAll()
                 .antMatchers("/**")
                 .hasAnyRole("ADMIN", "USER")
