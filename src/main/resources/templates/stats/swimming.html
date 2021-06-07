@@ -21,5 +21,37 @@
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>
+
+    <script th:src="@{/js/swimming.js}"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var distances = [[${swimDistances}]];
+            var dates = [[${swimDates}]];
+            var time = [[${swimTime}]];
+            var arrayData = new Array();
+
+            arrayData[0] = (['date', 'Distances(Miles)', 'Time(Mins)'])
+            for (i = 0; i < 5; i++) {
+                arrayData[i+ 1] = [dates[i], distances[i], time[i]];
+            }
+
+            var data = google.visualization.arrayToDataTable(arrayData, false);
+            var options = {'title':'Swims Graph',
+                'width':900,
+                'height':600,
+                hAxis: {
+                    title: 'Date'
+                },
+                vAxis: {
+                    title: 'Distances/Time',
+                }};
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('swim_distances_chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
 </body>
 </html>

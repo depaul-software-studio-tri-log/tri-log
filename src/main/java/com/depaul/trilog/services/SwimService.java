@@ -15,6 +15,9 @@ public class SwimService {
 	
 	@Autowired
 	private SwimRepository swimRepo;
+
+	@Autowired
+	private UserService userService;
 	
 	
 	public List<Swim> getAllSwims(){
@@ -44,6 +47,13 @@ public class SwimService {
 		
 		return swims;
 		
+	}
+
+
+	public List<Swim> getSwimsByUser(){
+		List <Swim> SwimsByUserID = new ArrayList<>();
+		swimRepo.findAllByUserOrderBySwimDateDesc(userService.getCurrentUser()).forEach(swim-> SwimsByUserID.add(swim));
+		return SwimsByUserID;
 	}
 
 }
