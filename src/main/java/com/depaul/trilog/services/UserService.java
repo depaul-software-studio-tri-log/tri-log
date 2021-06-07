@@ -2,6 +2,9 @@ package com.depaul.trilog.services;
 
 import com.depaul.trilog.dao.UserRepository;
 import com.depaul.trilog.entities.User;
+import com.sendgrid.helpers.mail.Mail;
+import com.sendgrid.helpers.mail.objects.Content;
+import com.sendgrid.helpers.mail.objects.Email;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
+
+import com.sendgrid.*;
+import java.io.IOException;
 
 @Service
 public class UserService {
@@ -42,7 +48,7 @@ public class UserService {
             Date expirationDate = getTokenExpirationDate();
             targetUser.setPasswordresetexpires(expirationDate);
             userRepo.save(targetUser);
-            sendPasswordResetEmail(user);
+            sendPasswordResetEmail(targetUser);
         }
         else {
             logger.info("No user found for email " + email);
@@ -50,6 +56,24 @@ public class UserService {
     }
 
     private void sendPasswordResetEmail(User user) {
+
+        Email from = new Email(env.getProperty("sendGridFromAddress"));
+        String subject = "Password Reset Link for Trilog";
+        Email to = new Email(user.getEmail());
+        Content content = new Content("text/plain", "token: " + user.getPasswordresettoken());
+        Mail mail = new Mail(from, subject, to, content);
+
+        SendGrid sg = new SendGrid(System.getenv(env.getProperty("sendgridAPIKey")));
+        Request request = new Request();
+        try {
+            request.setMethod(Method.POST);
+            request.setEndpoint("mail/send");
+            request.setBody(mail.build());
+            Response response = sg.api(request);
+            logger.debug(response.getBody());
+        } catch (IOException ex) {
+            logger.info("Exception sending password reset email to user " + user.getId() + ": " + ex.getStackTrace());
+        }
 
         logger.info("Sent password reset email to user " + user.getId());
     }
