@@ -72,6 +72,9 @@ public class LoginController {
     @GetMapping("/reset-password")
     public String getResetPasswordPage(@RequestParam(value = "token", required = true) String token,
                                 Model model) {
+        if (!validateToken(token)) {
+            return "redirect:/invalid-reset-token";
+        }
         model.addAttribute("token", token);
         return "reset-password";
     }
