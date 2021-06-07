@@ -8,11 +8,14 @@ import com.sendgrid.helpers.mail.objects.Email;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.core.env.Environment;
 
+import java.io.File;
+import java.nio.file.Files;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
@@ -60,10 +63,21 @@ public class UserService {
         Email from = new Email(env.getProperty("sendGridFromAddress"));
         String subject = "Password Reset Link for Trilog";
         Email to = new Email(user.getEmail());
-        Content content = new Content("text/plain", "token: " + user.getPasswordresettoken());
+        String body;
+        try {
+            File resource = new ClassPathResource("static/email/password-reset.html").getFile();
+            body = new String(Files.readAllBytes(resource.toPath()))
+                        .replace("{password-reset-url}", env.getProperty("password-reset-url"))
+                        .replace("{password-reset-token}", user.getPasswordresettoken());
+        }
+        catch (Exception ex) {
+            logger.info("Exception sending password reset email to user " + user.getId() + ": " + ex.getStackTrace());
+            return;
+        }
+        Content content = new Content("text/html", body);
         Mail mail = new Mail(from, subject, to, content);
 
-        SendGrid sg = new SendGrid(System.getenv(env.getProperty("sendgridAPIKey")));
+        SendGrid sg = new SendGrid(System.getenv("sendgridAPIKey"));
         Request request = new Request();
         try {
             request.setMethod(Method.POST);
@@ -73,6 +87,7 @@ public class UserService {
             logger.debug(response.getBody());
         } catch (IOException ex) {
             logger.info("Exception sending password reset email to user " + user.getId() + ": " + ex.getStackTrace());
+            return;
         }
 
         logger.info("Sent password reset email to user " + user.getId());
