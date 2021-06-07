@@ -27,19 +27,17 @@ public class SwimController {
 	private SwimService swimService;
 	
 	
-	@GetMapping 
+	@GetMapping
 	public String viewSwims(Model model) {
 		model.addAttribute("swims",swimService.getAllSwims());
-		
-		return "swims/viewSwims";
+
+		return "/stats/swimming";
 	}
 	
 	@RequestMapping(params ="addSwim")
 	public String addSwim(Model model) {
 		model.addAttribute("newSwim", new Swim());
 		return "swims/input_swim";
-		
-		
 	}
 	
 	@PostMapping
@@ -47,10 +45,9 @@ public class SwimController {
 		if (bindingResult.hasErrors()) {
 			return "swims/input_swim";
 		}
-		
-		//swimService.addSwim(swim);
-		swimRepo.save(swim);
-		return "redirect:/trilog/swim";
+		swimService.addSwim(swim);
+//		swimRepo.save(swim);
+		return "redirect:/stats/swimming";
 		
 	}
 	

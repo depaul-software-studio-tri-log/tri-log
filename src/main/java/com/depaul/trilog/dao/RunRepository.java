@@ -11,6 +11,6 @@ import com.depaul.trilog.entities.User;
 
 
 public interface RunRepository extends JpaRepository <Run, Long>{
-	List<Run> findByUser (User user);
+	List<Run> findAllByUserOrderByRunDateDesc (User user);
 
 }
