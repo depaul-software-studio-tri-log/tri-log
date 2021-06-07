@@ -12,5 +12,5 @@ import java.util.Map;
 @Repository
 public interface SwimRepository extends JpaRepository<Swim, Long> {
 
-    List<Swim> findAllByUserOrderBySwimDateDesc(User userr);
+    List<Swim> findAllByUserOrderBySwimDateDesc(User user);
 }
