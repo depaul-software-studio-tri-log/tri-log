@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.depaul.trilog.entities.Cycling;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,11 +27,11 @@ public class SwimService {
 		
 		return swims;
 	}
-	
-	
+
 	public Swim addSwim(Swim swim) {
-		return swimRepo.save(swim);
-		
+		swim.setUser(userService.getCurrentUser());
+		swimRepo.save(swim);
+		return swim;
 	}
 	
 	public void deleteSwim (Swim swim) {
@@ -50,10 +51,17 @@ public class SwimService {
 	}
 
 
+
 	public List<Swim> getSwimsByUser(){
 		List <Swim> SwimsByUserID = new ArrayList<>();
 		swimRepo.findAllByUserOrderBySwimDateDesc(userService.getCurrentUser()).forEach(swim-> SwimsByUserID.add(swim));
+
+	public List<Swim> getSwimsByUser(){
+		List <Swim> SwimsByUserID = new ArrayList<>();
+		swimRepo.findAllByUserOrderBySwimDateDesc(userService.getCurrentUser()).forEach(cycling-> SwimsByUserID.add(cycling));
+
 		return SwimsByUserID;
 	}
 
 }
+

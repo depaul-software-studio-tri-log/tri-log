@@ -21,31 +21,31 @@ public class Plan {
     private Date date = new Date();
 
     @Column(name = "swimworkout")
-    private String swimworkout;
+    private String swimworkout = "";
 
     @Column(name = "swimdistance")
-    private double swimdistance;
+    private double swimdistance = 0.0;
 
     @Column(name = "swimtime")
-    private int swimtime;
+    private int swimtime = 0;
 
     @Column(name = "cycleworkout")
-    private String cycleworkout;
+    private String cycleworkout = "";
 
     @Column(name = "cycledistance")
-    private double cycledistance;
+    private double cycledistance = 0.0;
 
     @Column(name = "cycletime")
-    private int cycletime;
+    private int cycletime = 0;
 
     @Column(name = "runworkout")
-    private String runworkout;
+    private String runworkout = "";
 
     @Column(name = "rundistance")
-    private double rundistance;
+    private double rundistance = 0.0;
 
     @Column(name = "runtime")
-    private int runtime;
+    private int runtime = 0;
 
     @Column(name = "userid")
     private int user;

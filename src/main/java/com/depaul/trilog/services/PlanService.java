@@ -19,7 +19,7 @@ public class PlanService {
     private UserService userService;
 
     public List<Plan> getAllPlansByUser() {
-        return this.planRepo.findPlansByUser(getCurrentUserId());
+        return this.planRepo.findPlansByUserOrderByDateDesc(getCurrentUserId());
     }
 
     public void savePlan(Plan plan) {

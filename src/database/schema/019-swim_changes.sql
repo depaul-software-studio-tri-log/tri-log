@@ -3,3 +3,4 @@ ALTER TABLE `swims`
     RENAME COLUMN `swimDate` TO `swim_date`,
     ADD Foreign Key(userid) references user(id)
     ;
+

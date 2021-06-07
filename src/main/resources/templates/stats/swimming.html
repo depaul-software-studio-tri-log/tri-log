@@ -10,19 +10,65 @@
         <div class="row wrapper min-vh-100 flex-column flex-sm-row">
             <div th:replace="fragments/header :: sidebar"></div>
             <main class="col bg-faded">
-
-                <div class="container p-3 m-1">
-                    <h2>Swimming Stats</h2>
-                    <small>Content goes here.</small>
-                </div>
-
+                <div class="row flex-wrap no-gutters">
+                        <div class="col-12 col-sm col-xl-7 p-1 m-2">
+                            <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                                <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                                    <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                        <div class="col-6">
+                                            <h5>Swims Graph</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="swim_distances_chart_div"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm col-xl-7 p-1 m-2">
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-7">
+                                        <h5>Swimming Entries</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <dl class="row flex-wrap no-gutters p-2">
+                                    <table class="table table-bordered table-striped table-hover text-center">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Swim ID</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Distances</th>
+                                            <th scope="col">Time</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:if="${swims.empty}">
+                                            <td colspan="6">No goals created.</td>
+                                        </tr>
+                                        <tr th:each="swim:${swims}">
+                                            <th scope="row" th:text="${swim.getId()}"></th>
+                                            <td th:text="${swim.getSwimDate()}"></td>
+                                            <td th:text="${swim.getDistance()}"></td>
+                                            <td th:text="${swim.getTime()}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
             </main>
         </div>
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>
 
+
     <script th:src="@{/js/swimming.js}"></script>
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" th:inline="javascript">
         google.charts.load('current', {'packages':['corechart']});

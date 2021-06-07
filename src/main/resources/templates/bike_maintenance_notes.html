@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head th:replace="fragments/header :: header(page='Cycling')">
-    <title>Cycling</title>
+<head th:replace="fragments/header :: header(page='Bike Maintenance Notes')">
+    <title>Bike Maintenance Notes</title>
 </head>
 <body>
 	<div th:replace="fragments/header :: navbar"></div>
@@ -12,33 +12,31 @@
 			<main class="col bg-faded">
 
 				<div class="container pt-2">
-					<h1 class = "display-4">Cycling</h1>
+					<h1 class = "display-4">Notes</h1>
 
 					<table class = "table table-bordered table-striped">
 						<thead class = "thead-dark">
 						<tr>
-							<th scope = "col"> Distance</th>
-							<th scope = "col"> Time </th>
+							<th scope = "col"> Note</th>
 							<th scope = "col"> Date </th>
 
 						</tr>
 						</thead>
 
 						<tbody>
-						<tr th:if = "${cyclings.empty}">
-							<td colspan = "2"> No Swims yet</td>
+						<tr th:if = "${bikeMainNotes.empty}">
+							<td colspan = "2"> No Notes yet</td>
 						</tr>
 
-						<tr th:each = "cycling:${cyclings}">
-							<td th:text = "${cycling.distance}"></td>
-							<td th:text = "${cycling.time}"></td>
-							<td th:text = "${cycling.cyclingDate}"></td>
+						<tr th:each = "note:${bikeMainNotes}">
+							<td th:text = "${note.note}"></td>
+							<td th:text = "${note.date}"></td>
 						</tr>
 						</tbody>
 
 					</table>
 
-					<a class="btn btn-lg btn-primary" th:href="@{/trilog/cycling?addCycling}"> Add Cycling </a>
+					<a class="btn btn-lg btn-primary" th:href="@{/trilog/bikeMaintenanceNotes?addMaintenanceNote}"> Add Note </a>
 				</div>
 
 			</main>

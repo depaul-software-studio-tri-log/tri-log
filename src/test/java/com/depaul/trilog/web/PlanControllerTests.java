@@ -107,11 +107,11 @@ class PlanControllerTests {
             mockMvc.perform(post("/plan/add").flashAttr("plan", plan))
                     .andExpect(status().is3xxRedirection())
                     .andExpect(view().name("redirect:/plan/" + date));
+
+            verify(planService).savePlan(any());
         }
         catch (Exception e) {
             fail("Post request to /plan/add failed: " + e.getCause());
         }
-
-        verify(planService).savePlan(any());
     }
 }
