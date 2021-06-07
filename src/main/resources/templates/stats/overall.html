@@ -10,16 +10,175 @@
         <div class="row wrapper min-vh-100 flex-column flex-sm-row">
             <div th:replace="fragments/header :: sidebar"></div>
             <main class="col bg-faded">
-
-                <div class="container p-3 m-1">
+                <div class="row flex-column no-gutters pl-2">
                     <h2>Overall Stats</h2>
-                    <small>Content goes here.</small>
                 </div>
 
+                <div class="row flex-wrap no-gutters">
+                    <div class="col-12 col-sm col-xl-5 p-1 m-2">
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                        <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                            <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                <div class="col-6">
+                                    <h5>Cycling</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="cycling_distances_chart_div"></div>
+                        </div>
+                    </div>
+                <div class="col-12 col-sm col-xl-5 p-1 m-2">
+                    <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                        <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                            <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                <div class="col-6">
+                                    <h5>blah blah blah</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <dl class="row flex-wrap no-gutters p-2">
+                                <table class="table table-bordered table-striped table-hover text-center">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Cycling ID</th>
+                                        <th scope="col">Distance Progress</th>
+                                        <th scope="col">Time Progress</th>
+                                        <th scope="col">Notes</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:if="${cyclings.empty}">
+                                        <td colspan="6">No goals created.</td>
+                                    </tr>
+                                    <tr th:each="cycling:${cyclings}">
+                                        <th scope="row" th:text="${cycling.getId()}"></th>
+                                        <td th:text="${cycling.getId()}"></td>
+                                        <td th:text="${cycling.getId()}"></td>
+                                        <td th:text="${cycling.getId()}"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="row flex-wrap no-gutters">
+                    <div class="col-12 col-sm col-xl-5 p-1 m-2">
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-6">
+                                        <h5>Runs</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="run_distances_chart_div"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm col-xl-5 p-1 m-2">
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-7">
+                                        <h5>blah blah blah</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row flex-wrap no-gutters">
+                    <div class="col-12 col-sm col-xl-5 p-1 m-2">
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-6">
+                                        <h5>Runs</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="swim_distances_chart_div"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm col-xl-5 p-1 m-2">
+                        <div class="row flex-column no-gutters rounded-lg shadow-lg">
+                            <div class="col border-top border-secondary rounded-top text-light bg-dark">
+                                <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
+                                    <div class="col-7">
+                                        <h5>blah blah blah</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
-
     <div th:replace="fragments/footer :: footer"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var distances = [[${cyclingDistances}]];
+            var dates = [[${cyclingDates}]];
+            var time = [[${cyclingTime}]];
+            var arrayData = new Array();
+
+            arrayData[0] = (['date', 'Distances(Miles)', 'Time(Mins)'])
+            for (i = 0; i < 5; i++) {
+                arrayData[i+ 1] = [dates[i], distances[i], time[i]];
+            }
+
+            var data = google.visualization.arrayToDataTable(arrayData, false);
+            var options = {'title':'Cycling Graph',
+                'width':700,
+                'height':300,
+                hAxis: {
+                    title: 'Date'
+                },
+                vAxis: {
+                    title: 'Distances/Time',
+                }};
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('cycling_distances_chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript" th:inline="javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var distances = [[${runDistances}]];
+            var dates = [[${runDates}]];
+            var time = [[${runTime}]];
+            var arrayData = new Array();
+
+            arrayData[0] = (['date', 'Distances(Miles)', 'Time(Mins)'])
+            for (i = 0; i < 5; i++) {
+                arrayData[i+ 1] = [dates[i], distances[i], time[i]];
+            }
+
+            var data = google.visualization.arrayToDataTable(arrayData, false);
+            var options = {'title':'Runs Graph',
+                'width':700,
+                'height':300,
+                hAxis: {
+                    title: 'Date'
+                },
+                vAxis: {
+                    title: 'Distances/Time',
+                }};
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('run_distances_chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
 </body>
 </html>

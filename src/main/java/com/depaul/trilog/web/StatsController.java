@@ -8,6 +8,7 @@ import com.depaul.trilog.entities.Cycling;
 import com.depaul.trilog.entities.Goals;
 import com.depaul.trilog.entities.Run;
 import com.depaul.trilog.services.CyclingService;
+import com.depaul.trilog.services.GoalsService;
 import com.depaul.trilog.services.RunService;
 import com.depaul.trilog.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,43 @@ public class StatsController {
     @Autowired
     private RunService runServ;
 
+
     @GetMapping("/stats/overall")
-    public String statsOverall() {
+    public String statsOverall(Model model) {
+        List<Cycling> cyclings = cyclingServ.getCyclingByUser();
+        List<String> cyclingDatesData = new ArrayList<>();
+        List<Integer> cyclingDistances = new ArrayList<>();
+        List<Integer> cyclingTime = new ArrayList<>();
+        cyclings.forEach(cycling-> {
+            cyclingDatesData.add(cycling.getCyclingDate().toString());
+            cyclingDistances.add(cycling.getDistance());
+            cyclingTime.add(cycling.getTime());
+        });
+
+        if (cyclings.size() > 5){cyclings.subList(5, cyclings.size()).clear();}
+
+        List<Run> runs = runServ.getRunsByUser(userService.getCurrentUser());
+        List<String> runDatesData = new ArrayList<>();
+        List<Integer> runDistances = new ArrayList<>();
+        List<Integer> runTime = new ArrayList<>();
+        runs.forEach(run -> {
+            runDatesData.add(run.getRunDate().toString());
+            runDistances.add(run.getDistance());
+            runTime.add(run.getTime());
+        });
+
+        if (runs.size() > 5){ runs.subList(5, runs.size()).clear();}
+
+        model.addAttribute("runs", runs);
+        model.addAttribute("runDates", runDatesData);
+        model.addAttribute("runDistances", runDistances);
+        model.addAttribute("runTime", runTime);
+
+        model.addAttribute("cyclings", cyclings);
+        model.addAttribute("cyclingDates", cyclingDatesData);
+        model.addAttribute("cyclingDistances", cyclingDistances);
+        model.addAttribute("cyclingTime", cyclingTime);
+
         return "stats/overall";
     }
 
@@ -46,7 +82,6 @@ public class StatsController {
     private UserService userService;
 
     @GetMapping("/stats/running")
-
     public String viewRun(Model model) {
         List<Run> runs = runServ.getRunsByUser(userService.getCurrentUser());
         List<String> datesdata = new ArrayList<>();
