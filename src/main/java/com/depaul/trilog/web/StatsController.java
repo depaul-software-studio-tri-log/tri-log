@@ -7,10 +7,8 @@ import com.depaul.trilog.dao.RunRepository;
 import com.depaul.trilog.entities.Cycling;
 import com.depaul.trilog.entities.Goals;
 import com.depaul.trilog.entities.Run;
-import com.depaul.trilog.services.CyclingService;
-import com.depaul.trilog.services.GoalsService;
-import com.depaul.trilog.services.RunService;
-import com.depaul.trilog.services.UserService;
+import com.depaul.trilog.entities.Swim;
+import com.depaul.trilog.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +31,8 @@ public class StatsController {
     @Autowired
     private RunService runServ;
 
+    @Autowired
+    private SwimService swimServ;
 
     @GetMapping("/stats/overall")
     public String statsOverall(Model model) {
@@ -60,6 +60,18 @@ public class StatsController {
 
         if (runs.size() > 5){ runs.subList(5, runs.size()).clear();}
 
+        List<Swim> swims = swimServ.getSwimsByUser();
+        List<String> swimDatesData = new ArrayList<>();
+        List<Integer> swimDistances = new ArrayList<>();
+        List<Integer> swimTime = new ArrayList<>();
+        swims.forEach(swim -> {
+            swimDatesData.add(swim.getSwimDate().toString());
+            swimDistances.add(swim.getDistance());
+            swimTime.add(swim.getTime());
+        });
+
+        if (swims.size() > 5){ swims.subList(5, swims.size()).clear();}
+
         model.addAttribute("runs", runs);
         model.addAttribute("runDates", runDatesData);
         model.addAttribute("runDistances", runDistances);
@@ -70,11 +82,32 @@ public class StatsController {
         model.addAttribute("cyclingDistances", cyclingDistances);
         model.addAttribute("cyclingTime", cyclingTime);
 
+        model.addAttribute("swims", swims);
+        model.addAttribute("swimDates", swimDatesData);
+        model.addAttribute("swimDistances", swimDistances);
+        model.addAttribute("swimTime", swimTime);
+
         return "stats/overall";
     }
 
     @GetMapping("/stats/swimming")
-    public String statsSwimming() {
+    public String statsSwimming(Model model) {
+
+        List<Swim> swims = swimServ.getSwimsByUser();
+        List<String> swimDatesData = new ArrayList<>();
+        List<Integer> swimDistances = new ArrayList<>();
+        List<Integer> swimTime = new ArrayList<>();
+        swims.forEach(swim -> {
+            swimDatesData.add(swim.getSwimDate().toString());
+            swimDistances.add(swim.getDistance());
+            swimTime.add(swim.getTime());
+        });
+
+        model.addAttribute("swims", swims);
+        model.addAttribute("swimDates", swimDatesData);
+        model.addAttribute("swimDistances", swimDistances);
+        model.addAttribute("swimTime", swimTime);
+
         return "stats/swimming";
     }
 

@@ -32,7 +32,7 @@
                         <div class="col border-top border-secondary rounded-top text-light bg-dark">
                             <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
                                 <div class="col-6">
-                                    <h5>blah blah blah</h5>
+                                    <h5>Cycling Entries</h5>
                                 </div>
                             </div>
                         </div>
@@ -42,9 +42,9 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">Cycling ID</th>
-                                        <th scope="col">Distance Progress</th>
-                                        <th scope="col">Time Progress</th>
-                                        <th scope="col">Notes</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Distances</th>
+                                        <th scope="col">Time</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -53,9 +53,9 @@
                                     </tr>
                                     <tr th:each="cycling:${cyclings}">
                                         <th scope="row" th:text="${cycling.getId()}"></th>
-                                        <td th:text="${cycling.getId()}"></td>
-                                        <td th:text="${cycling.getId()}"></td>
-                                        <td th:text="${cycling.getId()}"></td>
+                                        <td th:text="${cycling.getCyclingDate()}"></td>
+                                        <td th:text="${cycling.getDistance()}"></td>
+                                        <td th:text="${cycling.getTime()}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -83,9 +83,34 @@
                             <div class="col border-top border-secondary rounded-top text-light bg-dark">
                                 <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
                                     <div class="col-7">
-                                        <h5>blah blah blah</h5>
+                                        <h5>Run Entries</h5>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col">
+                                <dl class="row flex-wrap no-gutters p-2">
+                                    <table class="table table-bordered table-striped table-hover text-center">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Run ID</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Distances</th>
+                                            <th scope="col">Time</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:if="${runs.empty}">
+                                            <td colspan="6">No goals created.</td>
+                                        </tr>
+                                        <tr th:each="run:${runs}">
+                                            <th scope="row" th:text="${run.getId()}"></th>
+                                            <td th:text="${run.getRunDate()}"></td>
+                                            <td th:text="${run.getDistance()}"></td>
+                                            <td th:text="${run.getTime()}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </dl>
                             </div>
                         </div>
                     </div>
@@ -97,7 +122,7 @@
                             <div class="col border-top border-secondary rounded-top text-light bg-dark">
                                 <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
                                     <div class="col-6">
-                                        <h5>Runs</h5>
+                                        <h5>Swims</h5>
                                     </div>
                                 </div>
                             </div>
@@ -109,9 +134,34 @@
                             <div class="col border-top border-secondary rounded-top text-light bg-dark">
                                 <div class="row justify-content-between no-gutters border-bottom border-light px-2 pt-2">
                                     <div class="col-7">
-                                        <h5>blah blah blah</h5>
+                                        <h5>Swimming Entries</h5>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col">
+                                <dl class="row flex-wrap no-gutters p-2">
+                                    <table class="table table-bordered table-striped table-hover text-center">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Swim ID</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Distances</th>
+                                            <th scope="col">Time</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:if="${swims.empty}">
+                                            <td colspan="6">No goals created.</td>
+                                        </tr>
+                                        <tr th:each="swim:${swims}">
+                                            <th scope="row" th:text="${swim.getId()}"></th>
+                                            <td th:text="${swim.getSwimDate()}"></td>
+                                            <td th:text="${swim.getDistance()}"></td>
+                                            <td th:text="${swim.getTime()}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </dl>
                             </div>
                         </div>
                     </div>
@@ -138,7 +188,7 @@
             var data = google.visualization.arrayToDataTable(arrayData, false);
             var options = {'title':'Cycling Graph',
                 'width':700,
-                'height':300,
+                'height':345,
                 hAxis: {
                     title: 'Date'
                 },
@@ -168,7 +218,7 @@
             var data = google.visualization.arrayToDataTable(arrayData, false);
             var options = {'title':'Runs Graph',
                 'width':700,
-                'height':300,
+                'height':345,
                 hAxis: {
                     title: 'Date'
                 },
@@ -177,6 +227,35 @@
                 }};
 
             var chart = new google.visualization.ColumnChart(document.getElementById('run_distances_chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+    <script type="text/javascript" th:inline="javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var distances = [[${swimDistances}]];
+            var dates = [[${swimDates}]];
+            var time = [[${swimTime}]];
+            var arrayData = new Array();
+
+            arrayData[0] = (['date', 'Distances(Miles)', 'Time(Mins)'])
+            for (i = 0; i < 5; i++) {
+                arrayData[i+ 1] = [dates[i], distances[i], time[i]];
+            }
+
+            var data = google.visualization.arrayToDataTable(arrayData, false);
+            var options = {'title':'Runs Graph',
+                'width':700,
+                'height':345,
+                hAxis: {
+                    title: 'Date'
+                },
+                vAxis: {
+                    title: 'Distances/Time',
+                }};
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('swim_distances_chart_div'));
             chart.draw(data, options);
         }
     </script>

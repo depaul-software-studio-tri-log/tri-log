@@ -11,8 +11,10 @@ import com.depaul.trilog.configuration.TestUserConfiguration;
 
 import com.depaul.trilog.dao.CyclingRepository;
 import com.depaul.trilog.dao.RunRepository;
+import com.depaul.trilog.dao.SwimRepository;
 import com.depaul.trilog.entities.Cycling;
 import com.depaul.trilog.entities.Run;
+import com.depaul.trilog.entities.Swim;
 import com.depaul.trilog.entities.User;
 import com.depaul.trilog.services.CyclingService;
 import com.depaul.trilog.services.RunService;
@@ -46,6 +48,9 @@ public class StatsControllerTests  {
 
     @MockBean
     private CyclingRepository cycleRepo;
+
+    @MockBean
+    private SwimRepository swimRepo;
 
     @Autowired
     private CyclingService cyclingServ;
@@ -89,9 +94,18 @@ public class StatsControllerTests  {
         run.setRunDate(sqlDate);
         runList.add(run);
 
+        List<Swim> swimList = new ArrayList<>();
+        Swim swim = new Swim();
+        swim.setId(1L);
+        swim.setTime(10);
+        swim.setDistance(10);
+        swim.setSwimDate(sqlDate);
+        swimList.add(swim);
+
         Mockito.when(userService.getCurrentUser()).thenReturn(user);
         Mockito.when(cycleRepo.findAllByUserOrderByCyclingDateDesc(user)).thenReturn(cycleList);
-        Mockito.when(runRepo.findByUser(user)).thenReturn(runList);
+        Mockito.when(swimRepo.findAllByUserOrderBySwimDateDesc(user)).thenReturn(swimList);
+        Mockito.when(runRepo.findAllByUserOrderByRunDateDesc(user)).thenReturn(runList);
     }
 
     @Test
@@ -107,7 +121,11 @@ public class StatsControllerTests  {
                 .andExpect(model().attributeExists("cyclings"))
                 .andExpect(model().attributeExists("cyclingDates"))
                 .andExpect(model().attributeExists("cyclingDistances"))
-                .andExpect(model().attributeExists("cyclingTime"));
+                .andExpect(model().attributeExists("cyclingTime"))
+                .andExpect(model().attributeExists("swims"))
+                .andExpect(model().attributeExists("swimDates"))
+                .andExpect(model().attributeExists("swimDistances"))
+                .andExpect(model().attributeExists("swimTime"));
     }
 
 
@@ -138,9 +156,13 @@ public class StatsControllerTests  {
 
     @Test
     @WithUserDetails("steve")
-    void testShowSwim() throws Exception {
+    void testShowSwimming() throws Exception {
         setup();
         mockMvc.perform(get("/stats/swimming"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("swims"))
+                .andExpect(model().attributeExists("swimDates"))
+                .andExpect(model().attributeExists("swimDistances"))
+                .andExpect(model().attributeExists("swimTime"));;
     }
 }

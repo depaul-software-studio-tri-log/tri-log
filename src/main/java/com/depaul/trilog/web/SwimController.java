@@ -45,8 +45,8 @@ public class SwimController {
 		if (bindingResult.hasErrors()) {
 			return "swims/input_swim";
 		}
-//		swimService.addSwim(swim);
-		swimRepo.save(swim);
+		swimService.addSwim(swim);
+//		swimRepo.save(swim);
 		return "redirect:/stats/swimming";
 		
 	}
