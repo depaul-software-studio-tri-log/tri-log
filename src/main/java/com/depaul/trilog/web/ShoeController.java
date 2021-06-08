@@ -21,11 +21,11 @@ public class ShoeController {
 	
 	
 	
-	@RequestMapping
+	@GetMapping
 	public String viewShoes(Model model) {
 		model.addAttribute("shoes", shoeServ.getShoes());
 		
-		return "trilog/shoe";
+		return "my_shoes";
 		
 		
 	}
@@ -47,7 +47,7 @@ public class ShoeController {
 		
 		shoeServ.addShoe(shoe);
 		
-		return "redirect:trilog/shoe";
+		return "redirect:/trilog/shoe";
 		
 		
 	}
