@@ -52,7 +52,7 @@ public class SwimService {
 
 	public List<Swim> getSwimsByUser(){
 		List <Swim> SwimsByUserID = new ArrayList<>();
-		swimRepo.findAllByUserOrderBySwimDateDesc(userService.getCurrentUser()).forEach(cycling-> SwimsByUserID.add(cycling));
+		swimRepo.findAllByUserOrderBySwimDateDesc(userService.getCurrentUser()).forEach(swim-> SwimsByUserID.add(swim));
 		return SwimsByUserID;
 	}
 
