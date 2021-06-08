@@ -1,13 +1,12 @@
 create table if not exists shoes(
-	shoeID INT NOT NULL AUTO_INCREMENT,
+	shoeid INT NOT NULL AUTO_INCREMENT,
 	mileage int,
-	shoeBrand varchar(30),
-	shoeName varchar(30),
-	userID	int not null,
-	runID int not null,
+	shoe_brand varchar(30),
+	shoe_name varchar(30),
+	userid	int not null,
+
 	
 
-	PRIMARY KEY(shoeID),
-	FOREIGN KEY(userID) REFERENCES user(id),
-	FOREIGN KEY(runID) REFERENCES runs(runid)
+	PRIMARY KEY(shoeid),
+	FOREIGN KEY(userid) REFERENCES user(id)
 );

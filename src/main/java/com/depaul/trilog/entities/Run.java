@@ -43,5 +43,8 @@ public class Run implements Serializable {
 	private User user;
 	
 	
+	
+	@JoinColumn(name = "shoeid")
+	private Shoe shoeid;
 
 }

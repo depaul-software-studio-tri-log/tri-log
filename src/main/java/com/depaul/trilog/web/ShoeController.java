@@ -13,7 +13,7 @@ import com.depaul.trilog.entities.Shoe;
 import com.depaul.trilog.services.ShoeService;
 
 @Controller
-@RequestMapping("trilog/shoe")
+@RequestMapping("/trilog/shoe")
 public class ShoeController {
 
 	@Autowired
@@ -21,7 +21,7 @@ public class ShoeController {
 	
 	
 	
-	@GetMapping
+	@RequestMapping
 	public String viewShoes(Model model) {
 		model.addAttribute("shoes", shoeServ.getShoes());
 		
@@ -34,7 +34,7 @@ public class ShoeController {
 	public String addShoe(Model model) {
 		model.addAttribute("newShoe", new Shoe());
 		
-		return "input_new_shoe";
+		return "add_new_shoe";
 		
 	}
 	
@@ -42,12 +42,12 @@ public class ShoeController {
 	@PostMapping
 	public String createShoe(@ModelAttribute("newShoe") Shoe shoe, BindingResult binding ) {
 		if (binding.hasErrors()) {
-			return "input_new_shoe";
+			return "add_new_shoe";
 		}
 		
 		shoeServ.addShoe(shoe);
 		
-		return "redirect:trilog/shoe ";
+		return "redirect:trilog/shoe";
 		
 		
 	}

@@ -26,16 +26,16 @@ public class Shoe implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "shoeID")
+	@Column(name = "shoeid")
 	private long shoeid; 
 	
 	@Column(name = "mileage")
 	private int mileage;
 	
-	@Column(name = "shoeBrand")
+	@Column(name = "shoe_brand")
 	private String shoeBrand;
 	
-	@Column
+	@Column(name = "shoe_name")
 	private String shoeName;
 	
 	
@@ -44,9 +44,9 @@ public class Shoe implements Serializable {
 	private User user;
 	
 	
-	
-	@JoinColumn(name = "runID")
-	private Run runID;
+	/*
+	@JoinColumn(name = "runid")
+	private Run runID;*/
 	
 	
 	
