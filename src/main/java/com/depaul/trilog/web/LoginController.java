@@ -34,16 +34,11 @@ public class LoginController {
         return "login";
     }
 
-    @GetMapping("/create")
-    public String createAccount() {
-        return "create-account";
-    }
-
     @GetMapping("/forgot-password")
-    public String forgotPassword(@RequestParam(value = "confirmation", required = false) String error,
+    public String forgotPassword(@RequestParam(value = "confirmation", required = false) String confirmation,
                                  Model model) {
         String confirmationMessage = null;
-        if(error != null) {
+        if(confirmation != null && confirmation.equals("true")) {
             confirmationMessage = "Submission successful";
         }
         model.addAttribute("confirmationMessage", confirmationMessage);
