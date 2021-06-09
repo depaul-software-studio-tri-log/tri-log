@@ -4,12 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -37,5 +32,9 @@ public class Swim implements Serializable{
 	@Column (name = "swimDate")
 	//@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private Date swimDate;
+
+	@ManyToOne
+	@JoinColumn(name = "userid")
+	private User user;
 
 }

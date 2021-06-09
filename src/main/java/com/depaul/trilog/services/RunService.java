@@ -85,7 +85,7 @@ public class RunService {
 
 		public List<Run> getRunsByUser(User user){
 			List <Run> RunsByUserID = new ArrayList<>();
-			runRepo.findByUser (userService.getCurrentUser()).forEach(runs-> RunsByUserID.add(runs));
+			runRepo.findAllByUserOrderByRunDateDesc(userService.getCurrentUser()).forEach(runs-> RunsByUserID.add(runs));
 			return RunsByUserID;
 		
 	}

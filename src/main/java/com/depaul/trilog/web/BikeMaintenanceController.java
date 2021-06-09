@@ -33,7 +33,7 @@ public class BikeMaintenanceController {
 	@RequestMapping(params = "addMaintenanceNote")
 	public String addMainNote(Model model) {
 		model.addAttribute("bikeMainNote", new BikeMaintenance());
-		
+		 
 		return ("input_bike_maintenance_notes");
 	}
 	
