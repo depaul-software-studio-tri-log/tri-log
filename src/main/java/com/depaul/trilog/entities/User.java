@@ -18,6 +18,8 @@ public class User {
     private int height;
     private int weight;
     private String password;
+    private String passwordresettoken;
+    private Date passwordresetexpires;
 
     @OneToOne
     @JoinColumn(name = "primarysport", referencedColumnName = "id")
@@ -108,5 +110,21 @@ public class User {
 
     public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public String getPasswordresettoken() {
+        return passwordresettoken;
+    }
+
+    public void setPasswordresettoken(String passwordresettoken) {
+        this.passwordresettoken = passwordresettoken;
+    }
+
+    public Date getPasswordresetexpires() {
+        return passwordresetexpires;
+    }
+
+    public void setPasswordresetexpires(Date passwordresetexpires) {
+        this.passwordresetexpires = passwordresetexpires;
     }
 }

@@ -72,3 +72,11 @@
 .dropdown-menu > span.dropdown-item {
     cursor: pointer;
 }
+
+.reset-password-form .inputrow label {
+    flex: 1;
+}
+
+.reset-password-form .inputrow input {
+    flex: 2;
+}
