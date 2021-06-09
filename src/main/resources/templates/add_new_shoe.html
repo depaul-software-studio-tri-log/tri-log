@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(page='Add Shoe')">
+    <title>Add Shoe</title>
+</head>
+<body>
+	<div th:replace="fragments/header :: navbar"></div>
+
+	<div class="container-fluid">
+		<div class="row wrapper min-vh-100 flex-column flex-sm-row">
+			<div th:replace="fragments/header :: sidebar"></div>
+			<main class="col bg-faded">
+
+				<div class = "container pt-2">
+					<h1 class = "display-4">My Shoe</h1>
+
+					<form action = "#" th:action = "@{/trilog/shoe}" th:object = "${newShoe}"   method ="post" >
+
+						<div class = "row form-group">
+							<div class = "col-lg-6">
+								<label for= "note" >Shoe Brand </label>
+								<input type = "text" id= "shoeBrand" class= form-control th:field = "*{shoeBrand}" placeholder = "brand" >
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class = "col-lg-6">
+								<label for= "shoe_name" >Shoe Name</label>
+								<input type = "text" id = "shoe_name" class= form-control th:field = "*{shoeName}" placeholder = "Shoe Name" >
+							</div>
+						</div>
+
+						<button type = "submit" class = "btn btn-lg btn-primary"> Submit </button>
+						<a class = "btn btn-lg btn-warning" th:ref = "@{/trilog/shoe?addshoe}"> Cancel </a>
+
+					</form>
+				</div>
+
+			</main>
+		</div>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
