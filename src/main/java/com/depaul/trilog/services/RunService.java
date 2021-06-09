@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.depaul.trilog.dao.RunRepository;
 import com.depaul.trilog.entities.Run;
+import com.depaul.trilog.entities.Shoe;
 import com.depaul.trilog.entities.User;
 
 @Service
@@ -19,6 +20,9 @@ public class RunService {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ShoeService shoeService;
 
 
 	public List<Run>getAllRuns(){
@@ -31,6 +35,15 @@ public class RunService {
 
 	public Run addRun (Run run) {
 		run.setUser(userService.getCurrentUser());
+		Shoe shoe = new Shoe();
+		shoe.setMileage(run.getDistance());
+		shoe.setShoeBrand(shoe.getShoeBrand());
+		shoe.setShoeName(shoe.getShoeName());
+		shoe.setUser(userService.getCurrentUser());
+		shoe.setShoeid(1);
+		
+		run.setShoeid(shoe); 
+		
 		runRepo.save(run);
 		return run;
  

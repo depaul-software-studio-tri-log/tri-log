@@ -55,5 +55,13 @@ public class ShoeService {
 		
 	}
 	
+	
+	public Shoe getShoe() {
+		Shoe shoe = new Shoe();
+		shoe.getShoeid();
+		
+		return shoe;
+	}
+	
 
 }

@@ -1,9 +1,12 @@
 package com.depaul.trilog.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,6 +45,10 @@ public class Shoe implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "userid")
 	private User user;
+	
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "shoeid", cascade = CascadeType.ALL )
+	private List<Run> runs; 
 	
 	
 	/*

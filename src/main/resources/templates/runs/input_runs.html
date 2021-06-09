@@ -36,19 +36,19 @@
 							<input type = "date" id = "runDate" class= form-control th:field = "*{runDate}" placeholder = "date" >
 						</div>
 					</div>
-					
+					<!--  
 					<div class="row form-group">
 						<div class = "col-lg-6">
-						<div class="col-lg-3" th:object="${shoes}">
+						<div class="col-lg-6" th:object="${shoes}">
 							<label>Shoe </label>
 							<select class="form-control" id="shoeid" name="shoeid" >
 							<option value ="">Select Shoe </option>
-							<option th:each = "shoe : ${shoes}" 
-									th:value = "${shoe.shoeid}" 
+							<option th:each = "shoe:${shoes}" 
 									th:text = "${shoe.shoeName}"> </option>				
-					</select>
+							</select>
 						</div>
-					</div>
+						</div>
+					</div> -->
 
 					<button type = "submit" class = "btn btn-lg btn-primary"> Submit </button>
 					<a class = "btn btn-lg btn-warning" th:ref = "@{/trilog/run}"> Cancel </a>
